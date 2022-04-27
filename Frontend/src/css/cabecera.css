@@ -1,0 +1,506 @@
+#tituloSup,
+#tituloSitio {
+  font-family: 'Myriad Pro Cond';
+}
+
+#bannerSuperior {
+  height: 90px;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px 0 5px 0;
+}
+
+#bannerSuperior a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#row_cabecera {
+  background-color: #0f3d6a;
+}
+
+#logo {
+  border-right: 1px solid #fff;
+  margin: 15px 0 0 0;
+  padding-right: 10px;
+  padding-left: 0px;
+}
+
+#logo2 {
+  margin: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#menuSuperior {
+  margin: 20px 0 0 0;
+  padding: 0 10px;
+}
+
+#menuSuperior li {
+  list-style: none;
+}
+
+#menuSuperior ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  font-size: 10pt;
+  justify-content: center;
+}
+
+#menuSuperior ul>li:before {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 18px;
+  content: "|";
+  color: #fff;
+}
+
+#menuSuperior ul>li:last-child:after {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 18px;
+  content: "|";
+  color: #fff;
+}
+
+#menuSuperior ul li ul li:before,
+#menuSuperior ul li ul li:last-child:after {
+  display: none;
+}
+
+
+/*menu desplegable superior*/
+
+#menuSuperior ul li {
+  position: relative;
+}
+
+#menuSuperior ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 0;
+}
+
+#menuSuperior ul ul li {
+  float: none;
+  width: 150px;
+  background: #002644;
+  padding: 5px 2px;
+  border-bottom: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
+  border-right: 1px solid #d6d6d6;
+  border-radius: 3px;
+}
+
+#menuSuperior ul ul li:hover {
+  background: #0f3d6a;
+}
+
+#menuSuperior ul li:hover>ul {
+  display: block;
+  z-index: 100;
+}
+
+#bannerSuperiorResponsive {
+  margin: 0 0 0 0;
+  padding: 15px 0 15px 0;
+  display: inline-flex;
+  background: #143E69;
+  width: 100%;
+  height: auto;
+}
+
+#imgSlider {
+  position: relative;
+}
+
+#imgSlider img {
+  width: 100%;
+  height: 350px !important;
+}
+
+#imgPorDefecto img {
+  width: 100%;
+  height: auto;
+}
+
+#sliderFront {
+  position: relative;
+}
+
+#contenInicial {
+  position: absolute;
+  display: inline-flex;
+  right: 5%;
+  bottom: 20%;
+  color: #ffffff;
+}
+
+#contenInicial h2 {
+  background-color: #95c11f;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+
+#contenInicial a {
+  color: #ffffff;
+  margin: 7px 0 0 10px;
+  text-decoration: none;
+}
+
+#contenInicial h3 {
+  text-shadow: 3px 5px 2px #474747;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+#contenInicial span {
+  font-size: 18px;
+}
+
+#titInicio {
+  position: absolute;
+}
+
+#titInicio h1 {
+  color: #ffffff;
+  text-shadow: 3px 5px 2px #474747;
+}
+
+
+/*First level item arrows*/
+
+#menuLateral .menu-item-has-children>a:before,
+#menuNav .menu-item-has-children>a:before,
+#menuSuperior .menu-item-has-children>a:before,
+#menuSuperiorResponsive .menu-item-has-children>a:before,
+#menuLateralResponsive .menu-item-has-children>a:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  border: 6px solid transparent;
+  border-top-color: currentColor;
+}
+
+#menuLateral .menu-item-has-children>a:before {
+  margin: 5px 25px 0 0;
+}
+
+#menuNav .menu-item-has-children>a,
+#menuSuperior .menu-item-has-children>a {
+  margin: 0 15px 0 0;
+}
+
+#menuNav .menu-item-has-children>a:before,
+#menuSuperior .menu-item-has-children>a:before {
+  margin: 12px -5px 0 0;
+}
+
+#menuSuperiorResponsive .menu-item-has-children>a:before,
+#menuLateralResponsive .menu-item-has-children>a:before {
+  margin: 8px 15px 0 0;
+}
+
+#menuSuperiorResponsive a {
+  color: #0f3d6a;
+}
+
+@media(max-width: 991px) {
+
+  /*menú superior desplegable*/
+  .menuSuperiorResponsive {
+    height: 0;
+    background-color: #f2f2f2;
+    overflow: hidden;
+  }
+
+  .menuSuperiorResponsive li {
+    margin: 2px;
+    padding: 0px;
+    border: 1px inset #093a6b38;
+    list-style: none;
+  }
+
+  #menu-menu-superior {
+    padding: 0;
+    margin: 0;
+  }
+
+  .show {
+    /* background-image: url("../layouts/utp-layout/Recursos\ Informáticos\ y\ Educativos\ CRIE\ __\ Solicitud\ Sala\ de\ Cómputo\ Para\ Docentes_files/flecha1.png"); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 65px;
+    transition: all .8s ease;
+  }
+
+  #menuNavResponsive a {
+    color: #23527c;
+    text-decoration: none;
+  }
+
+  #menuNavResponsive ul {
+    background-color: #f2f2f2;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+  }
+
+  #menuNavResponsive li {
+    border: 5px solid #fff;
+    border-radius: 5px;
+  }
+
+  #menuNavResponsive .glyphicon {
+    color: #fff;
+    padding: 5px;
+  }
+
+  .menu-fixed {
+    margin: auto;
+  }
+
+  .btn.dropdown-toggle {
+    background-color: #0f3d6a;
+    color: #fff;
+  }
+
+  #open-hide {
+    text-align: center;
+    background: #0f3d6a;
+    color: #fff;
+    border: 1px solid;
+    font-size: 12pt;
+    font-weight: bold;
+    display: block;
+    width: 9%;
+    margin: 0 auto;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  .closebtn {
+    /*float: right;*/
+    width: 100%;
+    text-align: right;
+    margin: 5px 30px 5px 0;
+    font-size: 9pt;
+    color: #870602 !important;
+    border-bottom: 1px solid #0f3d6a;
+    font-weight: bold;
+  }
+
+  .abrirCerrar {
+    position: fixed;
+    z-index: 3;
+    top: 22%;
+    right: 1%;
+    margin: 0px -10px 0 0;
+    background-color: #0f3d6a;
+    color: #fff;
+    padding: 15px 10px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border: 1px solid #ffffff;
+  }
+
+  #menuLateralResponsive {
+    background-color: #f2f2f2;
+    position: fixed;
+    right: 0;
+    top: 15%;
+    width: 0;
+    z-index: 4;
+    transition: 1s;
+    height: auto;
+    overflow: scroll;
+  }
+
+  #closebtn2 {
+    display: none;
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  #menuLateralResponsive {
+    display: none;
+  }
+
+  #tituloSup {
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 2px;
+  }
+
+  #tituloSitio {
+    margin: 10px 0 0 0;
+    padding: 0 0 0 5px;
+    font-size: 12pt;
+  }
+}
+
+@media (max-width: 549px) {
+  #logo11 {
+    margin: 10px 0 0 0;
+    padding: 0;
+  }
+
+  #tituloSitio {
+    margin: 0;
+    font-size: 15pt;
+    text-align: center;
+  }
+
+  #personajes {
+    position: absolute;
+    bottom: 0%;
+    left: 10%;
+  }
+
+  #personajes img {
+    width: 30% !important;
+  }
+
+  #titInicio {
+    top: 0%;
+    right: 5%;
+  }
+
+  #titInicio h1 {
+    font-size: 15pt;
+    margin: 0;
+  }
+
+  #contenInicial h2 {
+    font-size: 10pt;
+    margin: 0;
+    padding: 3px
+  }
+
+  #contenInicial {
+    bottom: 0;
+    right: 0;
+  }
+
+  #contenInicial h3 {
+    font-size: 8pt;
+    padding: 0;
+    margin: 0;
+  }
+
+  #contenInicial a {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (min-width: 550px) and (max-width:768px) {
+  #logo11 {
+    margin: 0;
+    padding: 0;
+  }
+
+  #tituloSitio {
+    margin: 10px 0 0 0;
+    font-size: 16pt;
+    text-align: center;
+  }
+
+  #personajes {
+    position: absolute;
+    bottom: 0%;
+    left: 3%;
+  }
+
+  #personajes img {
+    width: 40% !important;
+  }
+
+  #titInicio {
+    top: 0%;
+    right: 0%;
+  }
+
+  #titInicio h1 {
+    font-size: 25pt;
+  }
+
+  #contenInicial {
+    bottom: 0;
+  }
+}
+
+@media (min-width:768px) and (max-width: 991px) {
+  #tituloSitio {
+    margin: 10px 0 0 0;
+    font-size: 20pt;
+    text-align: center;
+  }
+
+  #personajes {
+    position: absolute;
+    bottom: 0%;
+    left: 5%;
+  }
+
+  #personajes img {
+    width: 50% !important;
+  }
+
+  #titInicio {
+    top: 0%;
+    right: 1%;
+  }
+
+  #titInicio h1 {
+    font-size: 30pt;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #personajes {
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+  }
+
+  #personajes img {
+    width: 70% !important;
+  }
+
+  #titInicio {
+    top: 0%;
+    right: 3%;
+  }
+
+  #titInicio h1 {
+    font-size: 40pt;
+  }
+}
+
+@media (min-width:1200px) {
+  #personajes {
+    position: absolute;
+    bottom: 8%;
+    left: 15%;
+  }
+
+  #personajes img {
+    width: 85% !important;
+  }
+
+  #titInicio {
+    top: 0%;
+    right: 3%;
+  }
+
+  #titInicio h1 {
+    font-size: 40pt;
+  }
+}

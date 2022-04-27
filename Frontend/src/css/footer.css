@@ -1,0 +1,86 @@
+#menuInferior {
+  text-align: center;
+  border: 7px solid #fff;
+  -webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
+  -moz-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
+  box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
+}
+
+#menuInferior ul {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.anclaInferior {
+  position: fixed;
+  z-index: 1000;
+  bottom: 2%;
+  left: 2%;
+}
+
+
+/* fin estilos que dan efecto 3d a los div donde estan las rede sociales*/
+
+footer {
+  background-color: #BCBDC0;
+  margin-bottom: 20px;
+  font-size: 9pt;
+  color: #000000;
+}
+
+footer b,
+footer strong {
+  background-color: #808285;
+  padding: 2px;
+}
+
+footer p {
+  margin: 0;
+}
+
+.row-redes {
+  text-align: right;
+}
+
+.informacion-contacto,
+.informacion-institucional {
+  padding: 30px;
+  padding-bottom: 0;
+}
+
+@media (min-width: 992px) {
+  #menuInferior ul>li:before {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 18px;
+    content: "|";
+    color: #0f3d6a;
+  }
+
+  #menuInferior ul>li:last-child:after {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 18px;
+    content: "|";
+    color: #0f3d6a;
+  }
+}
+
+@media (max-width: 992px) {
+  #menuInferior ul {
+    display: block;
+  }
+
+  #menuInferior li {
+    border: 3px solid #fff;
+    -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.23);
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.23);
+  }
+
+  .informacion-contacto {
+    text-align: center;
+  }
+}
