@@ -336,6 +336,7 @@
           </div>
           <div class="col-12 col-sm-9 q-py-sm">
             <q-input
+              :disable="disable"
               outlined
               dense
               v-model="form.documento"
@@ -388,6 +389,7 @@
             v-if="form.tipo_formulario === '0' || form.tipo_formulario === '2'"
             class="col-12 col-sm-9 q-py-sm"
           >
+
             <q-input
               v-if="!disable_nombre_asignatura"
               v-model="form.codigo_asignatura"
@@ -407,6 +409,7 @@
               dense
               hide-selected
               use-input
+              dropdown-icon=""
               input-debounce="0"
               fill-input
               map-options
@@ -1446,7 +1449,7 @@ export default {
       if (sessionStorage.getItem("user")) {
         let user = JSON.parse(sessionStorage.getItem("user"));
         this.form.nombre = user.nombres + " " + user.apellidos;
-        this.form.documento = user.numdoc;
+        this.form.documento = user.numerodocumento;
         this.form.correo_utp = user.correo;
       }
     },
@@ -1514,10 +1517,13 @@ export default {
           .catch((err) => {});
       }
     },
+
     nombreAsignatura(val) {
       this.form.codigo_asignatura = val.CODIGO;
       this.form.nombre_asignatura = val.ASIGNATURA;
     },
+
+
     compareDate() {
       if (this.form.fecha_solicitud_inicio == this.form.fecha_solicitud_fin) {
         let day = date.formatDate(
