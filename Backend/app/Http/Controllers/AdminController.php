@@ -100,7 +100,7 @@ class AdminController extends Controller
         $filtros = '';
 
         if($request->input('codigo_asignatura')){
-            $filtros = $filtros." AND  codigo_asignatura LIKE '%".strtolower($request->input('codigo_asignatura'))."%' ";
+            $filtros = $filtros." AND  codigo_asignatura LIKE '%".strtoupper($request->input('codigo_asignatura'))."%' ";
         }
 
         if($request->input('correo_utp')){

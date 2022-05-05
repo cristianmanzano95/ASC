@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a43e93e40a28986ded61a01586bd35a3",
+    "content-hash": "d1b5d363b44d02311beb6945abc885c8",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -5451,16 +5451,16 @@
         },
         {
             "name": "yajra/laravel-oci8",
-            "version": "v8.4.1",
+            "version": "v8.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-oci8.git",
-                "reference": "cafde37947f90fe990b3242e8b03a09e7c2b8559"
+                "reference": "106b76a522a80f30404c6ba167fbc87ec5bb14ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/cafde37947f90fe990b3242e8b03a09e7c2b8559",
-                "reference": "cafde37947f90fe990b3242e8b03a09e7c2b8559",
+                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/106b76a522a80f30404c6ba167fbc87ec5bb14ad",
+                "reference": "106b76a522a80f30404c6ba167fbc87ec5bb14ad",
                 "shasum": ""
             },
             "require": {
@@ -5517,7 +5517,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-oci8/issues",
-                "source": "https://github.com/yajra/laravel-oci8/tree/v8.4.1"
+                "source": "https://github.com/yajra/laravel-oci8/tree/v8.6.1"
             },
             "funding": [
                 {
@@ -5529,7 +5529,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-07-10T05:25:46+00:00"
+            "time": "2022-01-31T08:46:25+00:00"
         },
         {
             "name": "yajra/laravel-pdo-via-oci8",
@@ -8090,5 +8090,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

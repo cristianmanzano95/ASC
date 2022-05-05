@@ -198,7 +198,12 @@ class FormularioController extends Controller
         where ROWNUM <= ".$limit." )
         where rnum  > ".$skip."
         ORDER BY fecha_solicitud desc
+        var_dump($data);
         ");
+
+
+        // console.log(User[0]);
+
         //Se saca un contador para saber el tamaño total de la consulta (sin paginar)
         $count = DB::connection('oracleCRIE')->select("
         SELECT count(*) AS COUNT FROM Formulario
