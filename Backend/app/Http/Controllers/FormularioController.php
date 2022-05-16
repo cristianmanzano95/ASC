@@ -81,6 +81,10 @@ class FormularioController extends Controller
             //Busca el id del ultimo formulario insertado.
             $id = DB::connection('oracleCRIE')->select("select max(formulario_id) AS id from Formulario");
 
+            echo var_dump($id);
+
+            dd($id);
+
 
             //Si fue exitosa la creación del formulario, crea los horarios para ese formulario
             if($CRIE){
@@ -198,9 +202,12 @@ class FormularioController extends Controller
         where ROWNUM <= ".$limit." )
         where rnum  > ".$skip."
         ORDER BY fecha_solicitud desc
-        var_dump($data);
         ");
 
+
+        //echo var_dump($data);
+
+        //dd($data);
 
         // console.log(User[0]);
 

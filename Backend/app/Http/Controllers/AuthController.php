@@ -226,7 +226,7 @@ class AuthController extends Controller
                     '".$token."',
                     TO_TIMESTAMP('".$fecha."', 'YYYY-MM-DD HH24:MI:SS'),
                     TO_TIMESTAMP('".$expiracion."', 'YYYY-MM-DD HH24:MI:SS'),
-                    '0'
+                    '1000'
                 )
             ");
 

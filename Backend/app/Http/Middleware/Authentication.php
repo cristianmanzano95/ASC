@@ -29,7 +29,7 @@ class Authentication
                 $token = $token[0];
                 if($token->rol == '0' || $token->rol == '1000'){
                     //Se busca el usuario en la base de datos para enviar la información a los controladores.
-                    $UTP = DB::connection('oracleUTP')->select("SELECT * FROM registro.VI_RYC_ESTUDIANTESACTIVOS WHERE IDTERCERO = '" . explode('.',base64_decode($request->header('Authorization')))[0] . "'");
+                    $UTP = DB::connection('oracleUTP')->select("SELECT * FROM ANDOVER.VI_CARNETUTP_ADMINITRATIVO WHERE IDTERCERO = '" . explode('.',base64_decode($request->header('Authorization')))[0] . "'");
                     $request->merge(['User' => $UTP]);
                     return $next($request);
                 }else{

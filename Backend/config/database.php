@@ -103,6 +103,7 @@ return [
             ],
         'oracleUTP' => [
             'driver' => 'oracle',
+            'tns'       => env('DB_TNS', ''),
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '1433'),
             'database' =>  env('DB_DATABASE', 'forge'),
@@ -110,7 +111,11 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset'   => 'AL32UTF8',
-            'prefix' => '',
+            'prefix' => env('DB_PREFIX', ''),
+            'prefix_schema' => env('DB_SCHEMA_PREFIX', ''),
+            'edition'   => env('DB_EDITION', 'ora$base'),
+
+
             ],
 
     ],
