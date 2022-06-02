@@ -358,8 +358,7 @@
                       no-caps
                       color="primary"
                       :loading="loadingAsignBtn"
-                      label="Notificar cambios
-                      "
+                      label="Notificar cambios"
                       @click="asignRequest(props.row)"
                     />
                     <q-btn
@@ -550,10 +549,11 @@ export default {
       Object.keys(filtro).forEach((element) => {
         filtro[element] ? false : delete filtro[element];
       });
-
-      httpAdmin
+      console.log("Aca se hace un filtro", filtro);
+       httpAdmin
         .get("/" + this.$route.name, { params: filtro })
         .then(({ data }) => {
+          console.log(data);
           this.data = data.data;
           this.requests = JSON.parse(JSON.stringify(data.data));
           if (this.currentRoute === 2)
@@ -573,6 +573,7 @@ export default {
         });
     },
     getRooms(val, update, abort, row) {
+      // console.log(row);
       httpAdmin
         .get("rooms", {
           params: {

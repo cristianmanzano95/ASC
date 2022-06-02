@@ -344,9 +344,7 @@
               placeholder="Número de identificación"
               bottom-slots
             >
-              <template v-slot:hint>
-                <span class="text-red">Sin guiones ni puntos</span>
-              </template>
+
             </q-input>
           </div>
           <div class="col-12 col-sm-3 flex text-left">
@@ -424,7 +422,7 @@
               lazy-rules
               :rules="[
                 (val) =>
-                  $v.form.codigo_asignatura.requiredIf ||
+                  $v.form.codigo_asignatura.requiredIf.uppercase ||
                   'Código asignatura requerido',
               ]"
             >
@@ -479,7 +477,7 @@
                     form.tipo_formulario == '0' && disable_nombre_asignatura
                   "
                 >
-                  <span v-if="!form.codigo_asignatura" class="text-red">
+                  <span v-if="!form.codigo_asignatura" class="text-secondary" style="text-transform: uppercase">
                     Ingresa el código de la asignatura
                   </span>
                   <span v-else-if="courses.length == 0">
@@ -1058,7 +1056,7 @@
                 </template>
                 <template v-slot:header-cell-sugerido="">
                   <q-th v-if="showedRequest.tipo_formulario == '2'">
-                    //condicionar solo mostrar cuando es Previsualizar Sugerido
+                    Cubiculo Sugerido
                   </q-th>
                 </template>
                 <template v-slot:body-cell-sugerido="props_c">
@@ -1310,11 +1308,13 @@ export default {
           delete this.form.so;
           delete this.form.link;
         }
+        // console.log("este es el form", this.form);
         http
           .post("create", this.form)
-          .then(({ data }) => {
+          .then(( data ) => {
             this.submitLoading = false;
-            if (data == 201) {
+            if (data.status === 200) {
+              console.log("data", data);
               this.$q.notify({
                 type: "success",
                 message: "Solicitud creada",
@@ -1425,6 +1425,7 @@ export default {
       let filtro = { ...this.filtro };
       Object.keys(filtro).forEach((element) => {
         filtro[element] ? false : delete filtro[element];
+        //console.log(filtro);
       });
       http
         .get("list", { params: filtro })
@@ -1443,7 +1444,11 @@ export default {
       http.defaults.headers.common["limit"] = this.pagination.rowsPerPage;
       http.defaults.headers.common["page"] = this.pagination.current;
       this.getUserRequests();
+      // console.log(this.pagination);
+      // console.log(http.defaults.headers.common);
     },
+
+
     setUser() {
       document.getElementById("first").scrollIntoView();
       if (sessionStorage.getItem("user")) {
@@ -1479,6 +1484,17 @@ export default {
         })
         .catch((err) => {});
     },
+
+    // getRecursos() {
+    //   http
+    //     .get("listarecursos")
+    //     .then(({ data }) => {
+    //       this.programas = data;
+    //       this.programasFilter = data;
+    //     })
+    //     .catch((err) => {});
+    // },
+
     programsFilter(val, update, abort) {
       update(() => {
         const needle = val
@@ -1500,10 +1516,11 @@ export default {
         abort();
         return;
       } else {
+        let codigoUpper = val.toUpperCase();
         http
           .get("listaasignaturas", {
             params: {
-              codigo: val,
+              codigo: codigoUpper,
             },
           })
           .then(({ data }) => {
@@ -1578,6 +1595,7 @@ export default {
       fecha_solicitud_inicio: {
         required,
       },
+
       fecha_solicitud_fin: {
         required,
         greaterThan(val, { fecha_solicitud_inicio }) {
@@ -1588,6 +1606,7 @@ export default {
           );
         },
       },
+
       cantidad_estudiantes: { required },
       so: {
         requiredIf: requiredIf(function () {
@@ -1630,6 +1649,7 @@ export default {
     this.getCubicles();
     this.getPagination();
     this.getPrograms();
+    // this.getRecursos();
     this.horasF = this.horas;
     this.horasF.pop();
   },
