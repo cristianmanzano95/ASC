@@ -142,7 +142,7 @@ class AuthController extends Controller
                     SELECT idtercero, nombres, apellidos, numerodocumento, cargo, tipocarnet, programadependencia from ANDOVER.VI_CARNETUTP_DOCENTE
                     WHERE numerodocumento = '" . $info[0]['numerodocumento'][0] . "'"); */
                 //Se consulta el idtercero con la base de datos de la utp para extraer más información del usuario (Además informacion actualizada, ya que lso datos de usuario en LDAP al parecer no se actualiza frecuentemente)
-                $UTP = DB::connection('oracleUTP')->select("SELECT * FROM registro.VI_RYC_ESTUDIANTESACTIVOS WHERE IDTERCERO = '" . $info[0]['idtercero'][0] . "'");
+                $UTP = DB::connection('oracleUTP')->select("SELECT * FROM ANDOVER.VI_CARNETUTP_ADMINITRATIVO WHERE IDTERCERO = '" . $info[0]['idtercero'][0] . "'");
 
 
                 //Se consulta en la tabla de administradores
@@ -188,7 +188,7 @@ class AuthController extends Controller
                     ], 401);
                 } else {
                     return response()->json([
-                        'title' => 'Usuario/Contraseña Incorrectq', 'detailed' => 'Error en la validación de los datos.'
+                        'title' => 'Usuario/Contraseña Incorrecta', 'detailed' => 'Error en la validación de los datos.'
                     ], 401);
                 }
             }

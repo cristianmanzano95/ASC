@@ -25,10 +25,11 @@ class AdminAuth
 
             //Si existe el token
             if(count($token) > 0){
-                $token = $token[0];
+                // $token = $token[0];
+                // error_log(base64_decode($request->header('Authorization'))[0] . "'");
                 //Se busca el usuario en la base de datos para enviar la información a los controladores.
-                $UTP = DB::connection('oracleUTP')->select("SELECT * FROM ANDOVER.VI_CARNETUTP_ADMINITRATIVO WHERE token = '" . explode('.',base64_decode($request->header('Authorization')))[0] . "'");
-                $request->merge(['User' => $UTP]);
+                // $UTP = DB::connection('oracleUTP')->select("SELECT * FROM ANDOVER.VI_CARNETUTP_ADMINITRATIVO WHERE token = '" . explode('.',base64_decode($request->header('Authorization')))[0] . "'");
+                // $request->merge(['User' => $UTP]);
                 return $next($request);
             }else{
                 return response()->json([

@@ -24,11 +24,14 @@ class Authentication
 
             //Se busca el token en la base de datos
             $token = DB::connection('oracleCRIE')->select("SELECT * FROM Token WHERE Token = '".$request->header('Authorization')."' AND expiracion > CURRENT_TIMESTAMP ");
+            //error_log($token[0]);
             //Si existe el token
             if(count($token) > 0){
                 $token = $token[0];
                 if($token->rol == '0' || $token->rol == '1000'){
-                    //Se busca el usuario en la base de datos para enviar la información a los controladores.
+                    // error_log($request->header('Authorization'));
+                    // error_log(($request->header('Authorization'))[0] . "'");
+                    // Se busca el usuario en la base de datos para enviar la información a los controladores.
                     $UTP = DB::connection('oracleUTP')->select("SELECT * FROM ANDOVER.VI_CARNETUTP_ADMINITRATIVO WHERE IDTERCERO = '" . explode('.',base64_decode($request->header('Authorization')))[0] . "'");
                     $request->merge(['User' => $UTP]);
                     return $next($request);

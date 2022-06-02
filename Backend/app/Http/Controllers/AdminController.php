@@ -225,10 +225,12 @@ class AdminController extends Controller
         //Trae los horarios por cada formulario y organiza los datos antes de ser enviados.
         $response = [];
         foreach($data as $form){
+
             $horarios = DB::connection('oracleCRIE')->select("
-                        SELECT * FROM Horario
+                        SELECT * FROM HORARIO
                         WHERE formulario_id = ".$form->formulario_id." AND recurso_id is not null
-                        ORDER BY dia");
+                        ORDER BY dia"
+                    );
             $h = array();
 
             foreach($horarios as $horario){
@@ -347,9 +349,37 @@ class AdminController extends Controller
         //Trae el formulario
         $formulario = DB::connection('oracleCRIE')->select("SELECT *
             from Formulario
-            where formulario_id = ".$request->input("formulario_id")."
-        ");
+            where formulario_id = ".intval($request->input('formulario_id')));
         $formulario = $formulario[0];
+        //print_r($formulario);
+        // (
+        //     [formulario_id] => 127
+        //     [idtercero] => 494801
+        //     [nombre] => cristian camilo manzano calvo
+        //     [programa_docente] => ingeniería de sistemas y  computación
+        //     [documento] => 1088324977
+        //     [correo_utp] => ccmanzano@utp.edu.co
+        //     [correo_alt] => cris.635@utp.edu.co
+        //     [codigo_asignatura] => is923
+        //     [nombre_asignatura] => comunicaciones iii
+        //     [grupo] => 2
+        //     [fecha_solicitud_inicio] => 2022-05-31 00:00:00
+        //     [fecha_solicitud_fin] => 2022-06-02 00:00:00
+        //     [cantidad_estudiantes] => 6
+        //     [software_necesario] =>
+        //     [parlantes] => 1
+        //     [videobeam] => 1
+        //     [estado] => PENDIENTE
+        //     [observaciones] =>
+        //     [tipo_formulario] => 0
+        //     [tipo_cubiculo] =>
+        //     [fecha_solicitud] => 2022-05-31 10:05:41
+        //     [so] =>
+        //     [link] =>
+        //     [remota] => 1
+        //     [cambio] => 0
+        // )
+
 
         //Si no encuentra el formulario, retorna error.
         if(!$formulario){
@@ -358,24 +388,33 @@ class AdminController extends Controller
 
         //Agrega a los filtros las condiciones de parlantes, videobeam y remota
         $filtros = '';
-        if($formulario->parlantes == '1'){
-            $filtros = $filtros." AND parlantes = 1";
+        if($formulario->parlantes == 15){
+            $filtros = $filtros." AND parlantes = 15";
         }
 
-        if(intval($formulario->videobeam) == 1){
-            $filtros = $filtros." AND videobeam = 1";
+        if(intval($formulario->videobeam) == 16){
+            $filtros = $filtros." AND videobeam = 16";
         }
 
-        if(intval($formulario->remota) == 1){
-            $filtros = $filtros." AND remota = 1";
+        if(intval($formulario->remota) == 24){
+            $filtros = $filtros." AND remota = 24";
         }
 
         //Trae los horarios
         $horarios = DB::connection('oracleCRIE')->select("SELECT *
             from Horario
-            where horario_id = ".$request->input("horario_id")."
-        ");
+            where horario_id = ".intval($request->input('horario_id')));
         $horario = $horarios[0];
+        // print_r($horario);
+
+        // (
+        //     [horario_id] => 56
+        //     [formulario_id] => 127
+        //     [dia] => 2
+        //     [recurso_id] =>
+        //     [hora_inicio] => 7:00
+        //     [hora_fin] => 8:00
+        // )
 
         // Trae la lista de horarios
         if(!$horario){
@@ -395,26 +434,41 @@ class AdminController extends Controller
 
         $data = 0;
         // Hace la consulta según el tipo de formulario 0- SALA 1- CUBICULO 2-VIDECONFERENCIA
-        if ($formulario->tipo_formulario == '0'){
-            $data = DB::connection('oracleCRIE')->select("
-            SELECT nombre
-            FROM recursos
-            WHERE id NOT IN (
-                SELECT B.id
-                FROM prestamos A
-                JOIN recursos B ON (A.recurso_id = B.id)
-                WHERE A.fecha >= to_date('".explode(' ',$formulario->fecha_solicitud_inicio)[0]."','yyyy-mm-dd') and
-                        A.fecha <= to_date('".explode(' ',$formulario->fecha_solicitud_fin)[0]."','yyyy-mm-dd') and
-                        to_char(A.fecha,'fmday','nls_date_language = AMERICAN') = '".$dia."' and
-                        A.estado! = 'N' and
-                        CASE WHEN to_timestamp('".$horario->hora_inicio."','HH24-MI') > to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_inicio."','HH24-MI') ELSE to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') END <
-                        CASE WHEN to_timestamp('".$horario->hora_fin."','HH24-MI') < to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_fin."','HH24-MI') ELSE to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') END AND
-                        B.tipo_id = 3
-            ) AND tipo_id = 3 AND cantidad_estudiantes >= ".intval($formulario->cantidad_estudiantes).$filtros." AND id NOT IN (64, 122)
-            ORDER BY nombre asc
-            "
-            );
-        }
+        //  if ($formulario->tipo_formulario == '0'){
+        //      $data = DB::connection('oracleCRIE')->select("
+        //      SELECT nombre
+        //      FROM recursos
+        //      WHERE tipo_id = 3 AND cantidad_estudiantes >= ".intval($formulario->cantidad_estudiantes).$filtros." AND id NOT IN (64, 122)
+        //      ORDER BY nombre asc"
+        //      );
+        //}
+            //print_r("Aqui va el filtro");
+            //print_r($filtros);
+        //  print_r("Aqui data");
+        //  print_r($data);
+
+            if ($formulario->tipo_formulario == '0'){
+             $data = DB::connection('oracleCRIE')->select("
+             SELECT nombre
+              FROM recursos
+              WHERE id NOT IN (
+                  SELECT B.id
+                  FROM prestamos A
+                  JOIN recursos B ON (A.recurso_id = B.id)
+                  WHERE A.fecha >= to_date('".explode(' ',$formulario->fecha_solicitud_inicio)[0]."','yyyy-mm-dd') and
+                          A.fecha <= to_date('".explode(' ',$formulario->fecha_solicitud_fin)[0]."','yyyy-mm-dd') and
+                          to_char(A.fecha,'fmday','nls_date_language = AMERICAN') = '".$dia."' and
+                          A.estado! = 'N' and
+                          CASE WHEN to_timestamp('".$horario->hora_inicio."','HH24-MI') > to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_inicio."','HH24-MI') ELSE to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') END <
+                          CASE WHEN to_timestamp('".$horario->hora_fin."','HH24-MI') < to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_fin."','HH24-MI') ELSE to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') END AND
+                          B.tipo_id = 3
+              ) AND tipo_id = 3 AND cantidad_estudiantes >= ".intval($formulario->cantidad_estudiantes).$filtros." AND id NOT IN (64, 122)
+              ORDER BY nombre asc"
+              );
+          }
+
+
+        // print_r("Hola soy el filtro");
 
         if ($formulario->tipo_formulario == '2'){
             $data = DB::connection('oracleCRIE')->select("
@@ -431,9 +485,7 @@ class AdminController extends Controller
                         CASE WHEN to_timestamp('".$horario->hora_inicio."','HH24-MI') > to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_inicio."','HH24-MI') ELSE to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') END <
                         CASE WHEN to_timestamp('".$horario->hora_fin."','HH24-MI') < to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_fin."','HH24-MI') ELSE to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') END AND
                         B.tipo_id = 2 AND A.grupo_id = ".$formulario->tipo_cubiculo."
-            ) AND tipo_id = 2 AND grupo_id = ".$formulario->tipo_cubiculo."
-            ORDER BY nombre asc
-            "
+            ) AND tipo_id = 2 AND grupo_id = ".$formulario->tipo_cubiculo."ORDER BY nombre asc"
             );
         }
         if ($formulario->tipo_formulario == '1'){
@@ -451,9 +503,7 @@ class AdminController extends Controller
                             CASE WHEN to_timestamp('".$horario->hora_inicio."','HH24-MI') > to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_inicio."','HH24-MI') ELSE to_timestamp(to_char(A.hora_inicio,'HH24-MI'),'HH24-MI') END <
                             CASE WHEN to_timestamp('".$horario->hora_fin."','HH24-MI') < to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') THEN to_timestamp('".$horario->hora_fin."','HH24-MI') ELSE to_timestamp(to_char(A.hora_fin,'HH24-MI'),'HH24-MI') END AND
                             B.id IN (64,122)
-                ) AND id IN (64,122) ".$filtros."
-                ORDER BY nombre asc
-                "
+                ) AND id IN (64,122) ".$filtros."ORDER BY nombre asc"
                 );
         }
 
@@ -472,8 +522,7 @@ class AdminController extends Controller
         //Trae el formulario
         $formulario = DB::connection('oracleCRIE')->select("SELECT *
             from Formulario
-            where formulario_id = ".$request->input("formulario_id")."
-        ");
+            where formulario_id = ".intval($request->input("formulario_id")));
         $formulario = $formulario[0];
         //Trae la lista de horarios
 
@@ -559,9 +608,9 @@ class AdminController extends Controller
                     //busca el id de la sala según el nombre.
                     $recurso =  DB::connection('oracleCRIE')->select("
                     SELECT ID FROM recursos
-                        WHERE nombre = '" .$ho['recurso_id']. "'
-                        ");
+                    WHERE nombre = '" .$ho['recurso_id']. "'");
                     $recurso = $recurso[0];
+
 
                     //Actualiza la tabla de horarios para agregar el id de la sala que se asignó.
                     DB::connection('oracleCRIE')->table('horario')

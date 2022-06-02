@@ -11,21 +11,23 @@ class FormularioController extends Controller
     //Crea un formulario
     public function create(Request $request)
     {
-        // Si no tiene horarios, retorna error
+    // Si no tiene horarios, retorna error
         if(count($request->input('Horarios')) == 0){
             return response()->json([
                 'title' => 'No hay horarios', 'detailed' => 'No se agregaron horarios a la solicitud.'
             ], 401);
         }
-
         // Si la fecha inicio y fin de la solicitud es la misma, valida que el día en el horario si sea el día que corresponde a esa fecha.
         if($request->input('fecha_solicitud_inicio') == $request->input('fecha_solicitud_fin')){
             $dayofweek = date('w', strtotime($request->input('fecha_solicitud_inicio') ));
+
             foreach($request->input('Horarios') as $horario){
+
                 if($dayofweek != $horario['dia']){
                     return response()->json([
                         'title' => 'Día invalido', 'detailed' => 'En la fecha solicitada no se encuentra el día.'
-                    ], 401);return response()->json( $dayofweek,201);
+                    ], 401);
+                    return response()->json( $dayofweek,201);
                 }
             }
         }
@@ -78,37 +80,36 @@ class FormularioController extends Controller
             '".$request->input('tipo_formulario')."',
             '".$request->input('tipo_cubiculo')."'
             )");
+
             //Busca el id del ultimo formulario insertado.
             $id = DB::connection('oracleCRIE')->select("select max(formulario_id) AS id from Formulario");
-
-            echo var_dump($id);
-
-            dd($id);
-
-
             //Si fue exitosa la creación del formulario, crea los horarios para ese formulario
             if($CRIE){
+                $HorarioArray = array();
                 foreach($request->input('Horarios') as $horario){
-                    DB::connection('oracleCRIE')->insert("
+                    $HorarioLog = DB::connection('oracleCRIE')->insert("
                     INSERT INTO Horario (
                         formulario_id,
                         dia,
                         hora_inicio,
                         hora_fin,
-                        cubiculo
-                    )VALUES("
-                        .intval($id[0]->id).",'"
-                        .$horario['dia']."','"
-                        .$horario['hora_inicio']."','"
-                        .$horario['hora_fin']."','"
-                        .$horario['cubiculo']."'
+                        recurso_id
+                    )VALUES(
+                        ".intval($id[0]->id).",
+                        '".$horario['dia']."',
+                        '".$horario['hora_inicio']."',
+                        '".$horario['hora_fin']."',
+                        '".intval($horario['cubiculo'])."'
                     )");
-                }
-            }
+                        array_push($HorarioArray, $HorarioLog);
+                        }
+
+                    print_r($HorarioArray);
+                    }
         return response()->json(201);
     }
 
-    //Actualiza cualqueir campo u horario de una solicitud, siempre que el estado de esta sea PENDIENTE.
+    //Actualiza cualquier campo u horario de una solicitud, siempre que el estado de esta sea PENDIENTE.
     public function update(Request $request)
     {
         //Trae el formulario
@@ -165,6 +166,8 @@ class FormularioController extends Controller
         $page = $request->header('page') && $request->header('page') > 0 ? $request->header('page') : 1;
         $skip = ($page - 1) * $limit;
         $limit = $limit + $skip;
+        // error_log($page);
+
 
         //Se define los filtros
         $filtros = '';
@@ -203,20 +206,11 @@ class FormularioController extends Controller
         where rnum  > ".$skip."
         ORDER BY fecha_solicitud desc
         ");
-
-
-        //echo var_dump($data);
-
-        //dd($data);
-
-        // console.log(User[0]);
-
         //Se saca un contador para saber el tamaño total de la consulta (sin paginar)
         $count = DB::connection('oracleCRIE')->select("
         SELECT count(*) AS COUNT FROM Formulario
         WHERE IDTERCERO = ".$request->User[0]->idtercero.$filtros."
         ");
-
         //Se agregan los horarios para cada formulario y se organizan los datos en un nuevo array antes de ser enviado
         $response = [];
         $response1 = [];
@@ -290,14 +284,28 @@ class FormularioController extends Controller
         return response()->json($response , 200);
     }
 
+
     public function lista_asignaturas(Request $request)
     {
+        $codigoUpper = strtoupper($request->codigo);
+        // $codigoUpper = $request->codigo;
         //Consulta para retornar los cubiculos para un grupo especifico, excluyendo los ids de los otros grupos y el del equipo del monitor.
-        $lista = DB::connection('oracleUTP')->select("SELECT * FROM REGISTRO.VI_RYC_ASIGNATURAS_CRIE WHERE CODIGO LIKE '%".$request->codigo."%'");
+        $lista = DB::connection('oracleUTP')->select("SELECT * FROM REGISTRO.VI_RYC_ASIGNATURAS_CRIE WHERE CODIGO LIKE '%".$codigoUpper."%'");
         $response = [];
         foreach($lista as $l){
             $response[] = ["ASIGNATURA" => $l->asignatura, "CODIGO" => $l->codigo];
         }
         return response()->json($response , 200);
     }
+//Listar recursos
+    // public function lista_recursos(Request $request)
+    // {
+    //     //Consulta para retornar los recursos, especificamente el nuevonombre.
+    //     $lista = DB::connection('oracleCRIE')->select("SELECT ID, nuevonombre FROM RECURSOS");
+    //     $response = [];
+    //     foreach($lista as $l){
+    //         $response[] = $l->nuevonombre;
+    //     }
+    //     return response()->json($response , 200);
+    // }
 }
