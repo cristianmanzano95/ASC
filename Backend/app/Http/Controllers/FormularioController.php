@@ -20,9 +20,7 @@ class FormularioController extends Controller
         // Si la fecha inicio y fin de la solicitud es la misma, valida que el día en el horario si sea el día que corresponde a esa fecha.
         if($request->input('fecha_solicitud_inicio') == $request->input('fecha_solicitud_fin')){
             $dayofweek = date('w', strtotime($request->input('fecha_solicitud_inicio') ));
-
             foreach($request->input('Horarios') as $horario){
-
                 if($dayofweek != $horario['dia']){
                     return response()->json([
                         'title' => 'Día invalido', 'detailed' => 'En la fecha solicitada no se encuentra el día.'
@@ -81,30 +79,79 @@ class FormularioController extends Controller
             '".$request->input('tipo_cubiculo')."'
             )");
 
+
             //Busca el id del ultimo formulario insertado.
             $id = DB::connection('oracleCRIE')->select("select max(formulario_id) AS id from Formulario");
             //Si fue exitosa la creación del formulario, crea los horarios para ese formulario
             if($CRIE){
                 $HorarioArray = array();
                 foreach($request->input('Horarios') as $horario){
-                    $HorarioLog = DB::connection('oracleCRIE')->insert("
-                    INSERT INTO Horario (
-                        formulario_id,
-                        dia,
-                        hora_inicio,
-                        hora_fin,
-                        recurso_id
-                    )VALUES(
-                        ".intval($id[0]->id).",
-                        '".$horario['dia']."',
-                        '".$horario['hora_inicio']."',
-                        '".$horario['hora_fin']."',
-                        '".intval($horario['cubiculo'])."'
-                    )");
-                        array_push($HorarioArray, $HorarioLog);
+                    // $recursoID = DB::connection('oracleCRIE')->select("SELECT id FROM recursos WHERE nombre = '".$horario['cubiculo']."'");
+                    if($request->input('tipo_formulario') === '2'){
+
+                        $recursoID = DB::connection('oracleCRIE')->select("SELECT id FROM recursos WHERE nombre = '".$horario['cubiculo']."'");
+
+                        $HorarioLog = DB::connection('oracleCRIE')->insert("
+                        INSERT INTO Horario (
+                            formulario_id,
+                            dia,
+                            hora_inicio,
+                            hora_fin,
+                            recurso_id,
+                            recurso_nombre
+                        )VALUES(
+                            ".intval($id[0]->id).",
+                            '".$horario['dia']."',
+                            '".$horario['hora_inicio']."',
+                            '".$horario['hora_fin']."',
+                            '".intval($recursoID[0]->id)."',
+                            '".$horario['cubiculo']."'
+                        )");
+                            array_push($HorarioArray, $HorarioLog);
+
+                        }else{
+                        $HorarioLog = DB::connection('oracleCRIE')->insert("
+                        INSERT INTO Horario (
+                            formulario_id,
+                            dia,
+                            hora_inicio,
+                            hora_fin,
+                            recurso_id
+                        )VALUES(
+                            ".intval($id[0]->id).",
+                            '".$horario['dia']."',
+                            '".$horario['hora_inicio']."',
+                            '".$horario['hora_fin']."',
+                            '".intval($horario['cubiculo'])."'
+                        )");
+                            array_push($HorarioArray, $HorarioLog);
                         }
 
-                    print_r($HorarioArray);
+                     print_r($HorarioArray);
+                    }
+
+
+
+                    // $HorarioLog = DB::connection('oracleCRIE')->insert("
+                    // INSERT INTO Horario (
+                    //     formulario_id,
+                    //     dia,
+                    //     hora_inicio,
+                    //     hora_fin,
+                    //     recurso_id,
+                    //     recurso_nombre
+                    // )VALUES(
+                    //     ".intval($id[0]->id).",
+                    //     '".$horario['dia']."',
+                    //     '".$horario['hora_inicio']."',
+                    //     '".$horario['hora_fin']."',
+                    //     '".intval($recursoID[0]->id)."',
+                    //     '".$horario['cubiculo']."'
+                    // )");
+                    //     array_push($HorarioArray, $HorarioLog);
+                    //     }
+
+                    // print_r($HorarioArray);
                     }
         return response()->json(201);
     }
@@ -268,8 +315,7 @@ class FormularioController extends Controller
     {
         //Consulta para retornar los cubiculos para un grupo especifico, excluyendo los ids de los otros grupos y el del equipo del monitor.
         $lista = DB::connection('oracleCRIE')->select("SELECT id, Nombre
-        from recursos where grupo_id = ".$request->input("tipo_id")." and id NOT IN (11,723,724,725,726,970,971,972)
-        ");
+        from recursos where grupo_id = ".$request->input("tipo_id")." and id NOT IN (11,723,724,725,726,970,971,972)");
         return response()->json($lista , 200);
     }
 

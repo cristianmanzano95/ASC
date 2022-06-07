@@ -25,6 +25,7 @@ Route::get('/listacubiculos', [FormularioController::class, 'lista_cubiculos'])-
 Route::get('/listaprogramas', [FormularioController::class, 'lista_programas'])->middleware('authentication');
 Route::get('/listaasignaturas', [FormularioController::class, 'lista_asignaturas'])->middleware('authentication');
 
+Route::get('adm/namerooms', [AdminController::class, 'namerooms'])->middleware('adminauth');
 Route::get('adm/rooms', [AdminController::class, 'rooms'])->middleware('adminauth');
 Route::get('adm/pendientes', [AdminController::class, 'pendientes'])->middleware('adminauth');
 Route::get('adm/confirmadas', [AdminController::class, 'confirmadas'])->middleware('adminauth');

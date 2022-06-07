@@ -343,6 +343,25 @@ class AdminController extends Controller
     }
 
     //Listado de salas disponibles según el horario con los filtros requeridos y no permitiendo cruce de horarios.
+    public function namerooms(Request $request)
+    {
+
+        //Trae el formulario
+        $formulario = DB::connection('oracleCRIE')->select("SELECT nombre
+            from Recursos
+            where id = ".intval($request->input('recurso_id')));
+        $formulario = $formulario[0]->nombre;
+
+        // print_r($formulario);
+
+        // $rooms = array();
+
+        // foreach ($data as $i => $sala)
+        // {
+        //     array_push($rooms, $sala->nombre);
+        // }
+        return response()->json($formulario , 200);
+    }
     public function rooms(Request $request)
     {
 
@@ -604,13 +623,13 @@ class AdminController extends Controller
             // Cicla los horarios del cuerpo de la solicitud para insertarlos en la tabla prestamos
             foreach($request->input('Horarios') as $ho){
                 if(strlen($ho['recurso_id']) > 0){
-
                     //busca el id de la sala según el nombre.
                     $recurso =  DB::connection('oracleCRIE')->select("
                     SELECT ID FROM recursos
                     WHERE nombre = '" .$ho['recurso_id']. "'");
+                    // print_r("Soy oh");
+                    // print_r($recurso);
                     $recurso = $recurso[0];
-
 
                     //Actualiza la tabla de horarios para agregar el id de la sala que se asignó.
                     DB::connection('oracleCRIE')->table('horario')
