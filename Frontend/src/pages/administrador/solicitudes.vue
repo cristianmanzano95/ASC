@@ -267,8 +267,10 @@
                           "
                           class="flex"
                         >
+                            <!-- v-model="props_c.row.recurso_id" -->
                           <q-select
                             v-model="props_c.row.recurso_id"
+                            :value="props_c.row.recurso_nombre"
                             :options="rooms"
                             menu-anchor="bottom left"
                             :disable="props_c.row.empty"
@@ -322,7 +324,7 @@
                         v-if="props.row.tipo_formulario == '2'"
                         :props="props_c"
                       >
-                        {{ props_c.row.cubiculo }}
+                        {{ props_c.row.recurso_nombre }}
                       </q-td>
                     </template>
                   </q-table>
@@ -414,6 +416,7 @@ export default {
       loadingEditBtn: false,
       totalRequests: 0,
       currentRoute: null,
+      nameRoom:"",
       routeMap: {
         pendientes: 0,
         confirmadas: 1,
@@ -522,16 +525,21 @@ export default {
     this.currentRoute = this.routeMap[this.$route.name];
   },
   methods: {
+
     toggleExpanded(val) {
       this.expanded =
         this.expanded[0] === val.row.formulario_id
           ? []
           : [val.row.formulario_id];
       this.data = JSON.parse(JSON.stringify(this.requests));
+
+console.log(val);
     },
     /**
      *
      */
+
+
     getPagination(props) {
       props ? (this.pagination = props.pagination) : false;
       httpAdmin.defaults.headers.common["order"] = this.pagination.sortBy;
@@ -549,11 +557,10 @@ export default {
       Object.keys(filtro).forEach((element) => {
         filtro[element] ? false : delete filtro[element];
       });
-      console.log("Aca se hace un filtro", filtro);
+      //console.log("Aca se hace un filtro", filtro);
        httpAdmin
         .get("/" + this.$route.name, { params: filtro })
         .then(({ data }) => {
-          console.log(data);
           this.data = data.data;
           this.requests = JSON.parse(JSON.stringify(data.data));
           if (this.currentRoute === 2)
@@ -573,7 +580,14 @@ export default {
         });
     },
     getRooms(val, update, abort, row) {
-      // console.log(row);
+      console.log("Aquí va un row");
+      console.log(row);
+      console.log("Aquí va un val");
+      console.log(val);
+      console.log("Aquí va un update");
+      console.log(update);
+      console.log("Aquí va un abort");
+      console.log(abort);
       httpAdmin
         .get("rooms", {
           params: {
@@ -584,6 +598,7 @@ export default {
         .then(({ data }) => {
           this.rooms = data;
           update();
+        console.log("rooms-DATA",data);
         })
         .catch((err) => {});
     },
@@ -599,16 +614,21 @@ export default {
         };
         body.Horarios.push(obj);
       });
+//Esta asignar se activa en la vista de solicitudes en proceso, al confirmar la solicitud
       httpAdmin
         .post("asignar", body)
         .then(({ data }) => {
+
           if (data === 200)
+
             httpAdmin
               .post("confirmar", body)
               .then(({ data }) => {
                 if (data === 200) this.getPagination();
                 this.loadingConfirm = false;
               })
+
+
               .catch((err) => {
                 this.loadingConfirm = false;
               });

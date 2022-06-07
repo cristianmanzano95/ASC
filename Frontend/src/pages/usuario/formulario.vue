@@ -723,8 +723,7 @@
                     @filter="
                       (val, update, abort) => {
                         getSugested(val, update, abort);
-                      }
-                    "
+                      }"
                     dense
                     outlined
                   >
@@ -1055,8 +1054,9 @@
                   </q-td>
                 </template>
                 <template v-slot:header-cell-sugerido="">
-                  <q-th v-if="showedRequest.tipo_formulario == '2'">
-                    Cubiculo Sugerido
+                  <q-th
+                    v-if="showedRequest.tipo_formulario == '2'">
+                      Cubículo Sugerido
                   </q-th>
                 </template>
                 <template v-slot:body-cell-sugerido="props_c">
@@ -1308,13 +1308,14 @@ export default {
           delete this.form.so;
           delete this.form.link;
         }
-        // console.log("este es el form", this.form);
+
+
         http
           .post("create", this.form)
           .then(( data ) => {
             this.submitLoading = false;
             if (data.status === 200) {
-              console.log("data", data);
+              //console.log("data", data);
               this.$q.notify({
                 type: "success",
                 message: "Solicitud creada",
