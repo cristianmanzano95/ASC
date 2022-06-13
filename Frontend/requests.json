@@ -1,4 +1,4 @@
-// Create 
+// Create
 // token: aC5wdWxnYXJpbjoxMDg4MDMyNjk0YQ==
 // endpoint: http://127.0.0.1:8000/api/create
 {
@@ -51,10 +51,10 @@
         }
     ]
 }
-//list 
-//endpoint: http://127.0.0.1:8000/api/list 
+//list
+//endpoint: http://127.0.0.1:8000/api/list
 //login
-//endpoint: http://127.0.0.1:8000/api/login 
+//endpoint: http://127.0.0.1:8000/api/login
 {
     "user": "h.pulgarin",
     "password": "1088032694a"

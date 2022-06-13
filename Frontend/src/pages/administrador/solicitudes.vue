@@ -268,9 +268,15 @@
                           class="flex"
                         >
                             <!-- v-model="props_c.row.recurso_id" -->
+                            <!-- <template v-if="model === null" v-slot:selected>
+                              <div class="text-grey-6">Placeholder</div>
+                            </template> -->
+                            <!-- v-if="props_c.row.recurso_id = props_c.row.recurso_nombre" -->
+                            <!-- :placeholder="props_c.row.recurso_id = props_c.row.recurso_nombre?'':''" -->
+                            <!-- :display-value="`${props_c.row.recurso_id ? ' ': props_c.row.recurso_id}`" -->
                           <q-select
                             v-model="props_c.row.recurso_id"
-                            :value="props_c.row.recurso_nombre"
+                            :display-value="`${arrayContains(rooms, props_c.row.recurso_id) ? props_c.row.recurso_id:' ' }`"
                             :options="rooms"
                             menu-anchor="bottom left"
                             :disable="props_c.row.empty"
@@ -310,7 +316,8 @@
                           />
                         </div>
                         <div class="text-left" v-else>
-                          {{ props.row.tipo_cubiculo }}
+                          {{ props.row.recurso_nombre }}
+                          <!-- {{ props.row.tipo_cubiculo }} -->
                         </div>
                       </q-td>
                     </template>
@@ -410,6 +417,7 @@ export default {
   props: ["filtro"],
   data() {
     return {
+      AuxRecurso_id: "",
       loading: false,
       loadingAsignBtn: false,
       loadingConfirm: false,
@@ -532,8 +540,6 @@ export default {
           ? []
           : [val.row.formulario_id];
       this.data = JSON.parse(JSON.stringify(this.requests));
-
-console.log(val);
     },
     /**
      *
@@ -580,14 +586,10 @@ console.log(val);
         });
     },
     getRooms(val, update, abort, row) {
-      console.log("Aquí va un row");
-      console.log(row);
-      console.log("Aquí va un val");
-      console.log(val);
-      console.log("Aquí va un update");
-      console.log(update);
-      console.log("Aquí va un abort");
-      console.log(abort);
+      console.log("val",val);
+      console.log("update",update);
+      console.log("abort",abort);
+      console.log("row",row);
       httpAdmin
         .get("rooms", {
           params: {
@@ -607,6 +609,7 @@ console.log(val);
       let body = {};
       body.formulario_id = item.formulario_id;
       body.Horarios = [];
+      console.log("soy el body",body);
       item.Horarios.forEach((element) => {
         let obj = {
           horario_id: element.horario_id,
@@ -618,26 +621,31 @@ console.log(val);
       httpAdmin
         .post("asignar", body)
         .then(({ data }) => {
-
           if (data === 200)
-
+          console.log("tenemos la data",data);
             httpAdmin
               .post("confirmar", body)
               .then(({ data }) => {
                 if (data === 200) this.getPagination();
                 this.loadingConfirm = false;
               })
-
-
               .catch((err) => {
-                this.loadingConfirm = false;
+              this.loadingConfirm = false;
               });
         })
         .catch((err) => {
           this.loadingConfirm = false;
         });
     },
+  // Se agrego la linea item.Horarios[0].recurso_id = this.AuxRecurso_id; para corregir el error del undefined offset, dado que se necesitaba modificar directamente el parametro item que nos traia la informacion de horarios.
+  // console.log("este es recurso_id",item.Horarios[0].recurso_id);
+      // for(let horario of item.Horarios){
+      //   console.log("que esta impriendo",horario);
+      //   horario.recurso_id = this.AuxRecurso_id;
+      // };
+      //item.Horarios[0].recurso_id = this.AuxRecurso_id;
     asignRequest(item) {
+      console.log("aca item", item);
       this.loadingAsignBtn = true;
       let body = {
         formulario_id: item.formulario_id,
@@ -650,6 +658,7 @@ console.log(val);
         };
         body.Horarios.push(obj);
       });
+      //console.log("tenemos el body",body);
       httpAdmin
         .post("asignar", body)
         .then(({ data }) => {
@@ -660,6 +669,20 @@ console.log(val);
           this.loadingAsignBtn = false;
         });
     },
+
+    arrayContains(arr, searchFor){
+    if(typeof arr.includes == 'undefined'){
+        var arrLength = arr.length;
+        for (var i = 0; i < arrLength; i++) {
+            if (arr[i] === searchFor) {
+                return true;
+            }
+        }
+        return false;
+    }
+    return arr.includes(searchFor);
+    },
+
     editAsigned(value, estado) {
       this.loadingEditBtn = true;
       httpAdmin
