@@ -350,7 +350,7 @@ class AdminController extends Controller
         $formulario = DB::connection('oracleCRIE')->select("SELECT nombre
             from Recursos
             where id = ".intval($request->input('recurso_id')));
-        $formulario = $formulario[0]->nombre;
+        $formulario = $formulario[0];
 
         // print_r($formulario);
 
@@ -630,6 +630,7 @@ class AdminController extends Controller
                     // print_r("Soy oh");
                     // print_r($recurso);
                     $recurso = $recurso[0];
+                    //$recurso = $recurso[0] + $recurso(null);
 
                     //Actualiza la tabla de horarios para agregar el id de la sala que se asignó.
                     DB::connection('oracleCRIE')->table('horario')
