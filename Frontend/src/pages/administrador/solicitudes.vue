@@ -13,7 +13,7 @@
   transition: 3s
 </style>
 <template>
-  <div class="container q-px-md">
+  <div class="container q-px-md" style="padding: 15px 35px 0 35px;">
     <h1 class="text-h5 full-width no-margin justify-start flex">
       Solicitudes
       {{

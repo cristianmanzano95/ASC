@@ -8,7 +8,7 @@ const routes = [
         component: () => import("src/pages/usuario/formulario.vue"),
         meta: {
           title:
-            "Recursos Informáticos y Educativos CRIE :: Solicitud Sala de Cómputo Para Docentes",
+            "Solicitud Salas especiales de formacion",
           requireUser: true
         }
       },

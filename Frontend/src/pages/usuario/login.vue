@@ -26,65 +26,18 @@
 }
 </style>
 <template>
-  <div v-if="$route.name === 'login'" class="q-pa-lg">
-    <div class="articulo">
-      <div class="titulo">
-        <h2>Solicitud de salas especiales de formación</h2>
-      </div>
-    </div>
-    <div class="container q-pt-md-xl flex items-center">
-      <div class="login text-center">
-        <h1 class="no-margin q-pb-lg text-h6">
-          Ingreso solicitud salas especiales de formación
-        </h1>
-        <div class="flex items-center justify-between">
-          <span>Usuario </span>
-          <q-input
-            class="inputs"
-            dense
-            v-model="loginData.user"
-            id="user"
-            outlined
-            type="text"
-          />
+  <main class="cuerpo-contenido">
+    <div v-if="$route.name === 'login'" class="">
+
+        <div class="tituloPost">
+          <h2 style="margin: 0;">Solicitud de salas especiales de formación</h2>
         </div>
-        <br />
-        <div class="flex items-center justify-between">
-          <span>Clave </span>
-          <q-input
-            class="inputs"
-            dense
-            v-model="loginData.password"
-            outlined
-            id="password"
-            type="password"
-          />
-        </div>
-        <br />
-        <q-btn
-          color="primary"
-          dense
-          no-caps
-          class="full-width"
-          icon="check"
-          label="Continuar"
-          @click="onClick"
-          :loading="loading"
-        />
-      </div>
-    </div>
-  </div>
-  <div v-else class="q-pa-lg admin-login">
-    <div class="container q-pt-md-xl flex justify-center items-center">
-      <div class="login-adm flex wrap text-center items-center">
-        <div>
-          <img src="../../assets/img/utp.png" alt="" />
-          <div class="text-white">
-            Solo usuarios autorizados <br />
-            pueden acceder al sistema
-          </div>
-        </div>
-        <div class="bg-white q-pa-md">
+
+      <div class="container q-pt-md-xl flex items-center">
+        <div class="login text-center">
+          <h1 class="no-margin q-pb-lg text-h6">
+            Ingreso solicitud salas especiales de formación
+          </h1>
           <div class="flex items-center justify-between">
             <span>Usuario </span>
             <q-input
@@ -122,7 +75,56 @@
         </div>
       </div>
     </div>
-  </div>
+    <div v-else class="q-pa-lg admin-login">
+      <div class="container q-pt-md-xl flex justify-center items-center">
+        <div class="login-adm flex wrap text-center items-center">
+          <div>
+            <img src="../../assets/img/utp.png" alt="" />
+            <div class="text-white">
+              Solo usuarios autorizados <br />
+              pueden acceder al sistema
+            </div>
+          </div>
+          <div class="bg-white q-pa-md">
+            <div class="flex items-center justify-between">
+              <span>Usuario </span>
+              <q-input
+                class="inputs"
+                dense
+                v-model="loginData.user"
+                id="user"
+                outlined
+                type="text"
+              />
+            </div>
+            <br />
+            <div class="flex items-center justify-between">
+              <span>Clave </span>
+              <q-input
+                class="inputs"
+                dense
+                v-model="loginData.password"
+                outlined
+                id="password"
+                type="password"
+              />
+            </div>
+            <br />
+            <q-btn
+              color="primary"
+              dense
+              no-caps
+              class="full-width"
+              icon="check"
+              label="Continuar"
+              @click="onClick"
+              :loading="loading"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>

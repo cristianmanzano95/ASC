@@ -3,244 +3,273 @@
 <template>
   <div>
     <!-- ===================================================================================================================================================== -->
-    <div class="row cabecera">
-      <div class="slider-facultades col-md-12 col-lg-12 hidden-print">
-        <!-- se hace el llamado al slider y al menú de cada facultad -->
+    <header id="header">
 
-        <!-- éste include llama al archivo seccion_superior donde esta la cabecera de los sitios -->
-        <div class="header container_principal">
-          <div class="row row_cabecera hidden-xs hidden-sm">
-            <div class="container_cabecera row">
-              <div class="img-izq-sup col-lg-1 col-md-1">
-                <a
-                  href="https://www.utp.edu.co/"
-                  title="Universidad Tecnológica de Pereira"
-                  accesskey="1"
-                >
-                  <img
-                    src="../../assets/img/utp-150.png"
-                    id="img-izq-sup"
-                    alt="Escudo Universidad Tecnologica de Pereira"
-                    class="img-responsive"
-                  />
-                </a>
-              </div>
-
-              <div class="prograPosgrados col-lg-2 col-md-2">
-                <div
-                  class="
-                    prograPosgradosLetra
-                    col-lg-12 col-md-12 col-sm-12 col-xs-12
-                  "
-                >
-                  <a class="" href="https://crie.utp.edu.co/inicio.html">
-                    <!-- las limeas siguientes acomoda el título en ´partes y puede ser llamado desde cuanquier parte de plantillaPosgrados -->
-                    <div class="tituloSup" style="">Recursos Informáticos</div>
-                    <div class="tituloIup" style="">y Educativos - CRIE</div>
-                  </a>
-                </div>
-              </div>
-
-              <nav class="menu_superior col-lg-7 col-md-7">
-                <ul class="menu_principal_facul">
-                  <li>
-                    <a href="https://crie.utp.edu.co/inicio.html">Inicio</a>
-                  </li>
-                  <li>
-                    <a href="https://www.utp.edu.co/principal/accesibilidad.php"
-                      >Accesibilidad</a
-                    >
-                  </li>
-                  <li>
-                    <a href="https://crie.utp.edu.co/mapa.html"
-                      >Mapa del Sitio</a
-                    >
-                  </li>
-                  <li>
-                    <a href="https://www.utp.edu.co/atencionalciudadano/"
-                      >Atención al Ciudadano</a
-                    >
-                  </li>
-                  <li><a href="https://pqrs.utp.edu.co/">PQRs</a></li>
-                  <li>
-                    <a
-                      href="https://accounts.google.com/signin/v2/identifier?continue=http%3A%2F%2Fmail.google.com%2Fa%2Futp.edu.co&amp;ltmpl=default&amp;hd=utp.edu.co&amp;service=mail&amp;sacu=1&amp;rip=1&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin"
-                      >Correo</a
-                    >
-                  </li>
-                  <li><a href="https://www.utp.edu.co/feed.php">RSS</a></li>
-                </ul>
-              </nav>
-
-              <div class="escudo_facul col-lg-2 col-md-2">
-                <a
-                  href="https://www.mineducacion.gov.co/1621/w3-channel.html"
-                  title="Ministerio de Educacion"
-                  accesskey="2"
-                >
-                  <img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/ministerioeducacion2(1).png"
-                    alt="Ministerio de Educación"
-                    class="img-responsive"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div id="sliderPosgrados">
-            <!-- Verifica si la cantidad de imagenes es mayor o igual a 1 -->
-
-            <div class="row row_carrusel">
-              <div
-                class="slider-facultad col-xs-12 col-sm-12 col-md-12 col-lg-12"
-              >
-                <div
-                  id="carousel-banner"
-                  class="carousel carousel-banner slide"
-                >
-                  <!-- Imágenes -->
-                  <div class="carousel-inner slider-fac">
-                    <div class="item active">
-                      <img
-                        class="img-responsive"
-                        src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/_JCM2752Banner.jpg"
-                      />
-                    </div>
-
-                    <!-- <div class="item">
-                      <img
-                        class="img-responsive"
-                        src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/banner.jpg"
-                      />
-                    </div>
-
-                    <div class="item">
-                      <img
-                        class="img-responsive"
-                        src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/banner1.jpg"
-                      />
-                    </div>
-
-                    <div class="item">
-                      <img
-                        class="img-responsive"
-                        src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/Banner-Programas-academicos50.jpg"
-                      />
-                    </div>
-
-                    <div class="item">
-                      <img
-                        class="img-responsive"
-                        src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/DJI_0011Banner.jpg"
-                      />
-                    </div>
-
-                    <div class="item">
-                      <img
-                        class="img-responsive"
-                        src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/_JCM2754Banner.jpg"
-                      />
-                    </div> -->
-                  </div>
-
-                  <a
-                    class="left carousel-control"
-                    href="https://crie.utp.edu.co/crie/reserva#carousel-banner"
-                    data-slide="prev"
-                  >
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                  </a>
-                  <a
-                    class="right carousel-control"
-                    href="https://crie.utp.edu.co/crie/reserva#carousel-banner"
-                    data-slide="next"
-                  >
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row menu_nav hidden-xs hidden-sm">
-      <div class="ribbon-facultades hidden-print row">
-        <div class="menu-nav col-lg-8 col-md-8">
-          <ul class="menu_navegacion_facul">
-            <li><a href="https://crie.utp.edu.co/inicio.html">Inicio</a></li>
-            <li>
-              <a href="https://www.utp.edu.co/inscripciones/">Inscripciones</a>
-            </li>
-            <li>
-              <a href="https://www.utp.edu.co/portal/facultades/">Facultades</a>
-            </li>
-            <li>
-              <a href="https://www.utp.edu.co/portal/inicio">La Universidad</a>
-            </li>
-            <li>
-              <a href="https://www.utp.edu.co/institucional/utp-virtual/">UTP Virtual</a
-              >
-            </li>
-            <li>
-              <a href="https://www.utp.edu.co/portal/servicios/">Servicios</a>
-            </li>
-            <li>
-              <a href="https://www.utp.edu.co/internacional/">Internacional</a>
-            </li>
-            <li><a href="https://biblioteca.utp.edu.co/">Biblioteca</a></li>
-          </ul>
+          <!-- sección del banner superior -->
+      <section class="row col-12 items-center content-around row_cabecera">
+        <!--Menu desplegable parte superior izquierda-->
+        <div class="col-1 desktop-hide">
+            <q-btn-dropdown color="grey-5" icon="menu">
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Inicio')">
+                  <q-item-section>
+                    <q-item-label><a href="https://www.utp.edu.co/">Inicio</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Accesibilidad')">
+                <q-item-section>
+                  <q-item-label><a href="https://www.utp.edu.co/principal/accesibilidad.php">Accesibilidad</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+             <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Mapa del Sitio')">
+                <q-item-section>
+                  <q-item-label><a href="https://www.utp.edu.co/principal/mapa.php">Mapa del Sitio</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Atención al Ciudadano')">
+                <q-item-section>
+                  <q-item-label><a href="https://www.utp.edu.co/atencionalciudadano/">Atención al Ciudadano</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('PQRS')">
+                <q-item-section>
+                  <q-item-label><a href="https://pqrs.utp.edu.co/">PQRS</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Correo')">
+                <q-item-section>
+                  <q-item-label><a href="https://www.utp.edu.co/correo">Correo</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('RSS')">
+                <q-item-section>
+                  <q-item-label><a href="https://www.utp.edu.co/feed.php">RSS</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            </q-btn-dropdown>
         </div>
 
-        <div class="buscador-facul col-lg-4 col-md-4">
-          <form
-            class="input-group input-group-sm"
-            role="search"
-            action="https://crie.utp.edu.co/crie/busquedas.html"
-            method="GET"
-            id="cse-search-box"
-          >
-            <label for="buscar" style="display: none">Buscar</label>
-            <input
-              type="hidden"
-              name="cx"
-              value="016308424957665409789:f36jprwbdtw"
-            />
-            <input type="hidden" name="cof" value="FORID:10" />
-            <input type="hidden" name="ie" value="UTF-8" />
-            <input type="text" class="form-control" id="buscar" name="q" />
-            <span class="input-group-btn">
-              <button
-                class="btn btn-primary btn-buscar"
-                name="sa"
-                type="submit"
-              >
-                <q-icon name="search" />
-              </button>
-            </span>
-            <input type="hidden" name="siteurl" value="www.utp.edu.co/" />
+          <!-- logo de la UTP -->
+
+        <section class="row col-sm-3 text-center text-sm-start logo-titulo ">
+            <!-- contenedor img -->
+          <div class="row items-center col-12 titulo">
+            <a class="subrayado" href="http://www.utp.edu.co/" rel="noopener norreferer" title="UTP" target="_blank">
+              <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/logoutp.png" title="Universidad Tecnológica de Pereira" alt="Logo Universidad Tecnológica de Pereira" class="logo" style="margin-left: 1rem;">
+            </a>
+            <!-- linea vertical -->
+            <div class="d-none d-sm-block vl col-1 ms-4"></div>
+            <!-- fin linea -->
+
+            <!-- texto facultades -->
+            <div class="col-sm-5 d-none d-sm-block text-start q-ml-sm" style="text-align: left; margin-left: 1.5rem;">
+              <a href="https://crie.utp.edu.co">
+                <span class="tituloSup">CRIE</span>
+              </a>
+            </div>
+            <!-- fin texto facultades -->
+          </div>
+          <!-- fin img -->
+        </section>
+
+          <!-- menu superior -->
+      <section class="col-sm-7">
+        <q-bar class=" menu-institucional" style="align-items: center; justify-content: center; ">
+          <div class="cursor-pointer"><a href="https://www.utp.edu.co/">Inicio</a></div>
+          <div class="cursor-pointer"><a href="https://www.utp.edu.co/principal/accesibilidad.php">Accesibilidad</a></div>
+          <div class="cursor-pointer"><a href="https://www.utp.edu.co/principal/mapa.php">Mapa del Sitio</a></div>
+          <div class="cursor-pointer"><a href="https://www.utp.edu.co/atencionalciudadano/">Atención al Ciudadano</a></div>
+          <div class="cursor-pointer"><a href="https://pqrs.utp.edu.co/">PQRS</a></div>
+          <div class="cursor-pointer"><a href="https://www.utp.edu.co/correoprueba">Correo</a></div>
+          <div class="cursor-pointer"><a href="https://www.utp.edu.co/feed.php">RSS</a></div>
+        </q-bar>
+      </section>
+        <!-- logo del ministerio de educación -->
+        <section class="col-6 col-sm-2 text-end logo-ministerio">
+          <a href="https://www.mineducacion.gov.co/" rel="noopener norreferer" title="Ministerio de Educación" target="_blank">
+            <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/ministerioeducacion.png" title="Ministerio de Educación" alt="Ministerio de Educación de Colombia" class="logo2">
+          </a>
+        </section>
+
+          <!-- </div> -->
+
+      </section>
+        <!-- fin sección del banner superior -->
+        <!-- sección del slider que se muestra en la página principal. -->
+      <section class="sliderprincipal">
+        <div class="slider1">
+          <!-- sección del slider que se muestra en la página principal. -->
+          <section class="imagen-banner">
+            <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/cabecera-principal.jpg" title="Universidad Tecnológica de Pereira">
+          </section>
+        </div>
+        <!-- fin sección del slider que se muestra en la página principal -->
+
+        <div class="titulositio">
+          <h1>Recursos Informáticos y Educativos</h1>
+        </div>
+      </section>
+        <!-- fin sección del slider que se muestra en la página principal -->
+      <section class="col-12 row align-items-center menu-institucional">
+        <div class="col-7 d-lg-none mobile-only desktop-hide">
+          <q-btn-dropdown color="grey-5" icon="menu">
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Inicio')">
+                  <q-item-section>
+                    <q-item-label><a href="https://crie.utp.edu.co/">Inicio</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('CRIE')">
+                  <q-item-section>
+                    <q-item-label><a href="https://crie.utp.edu.co/crie/">CRIE</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Noticias')">
+                  <q-item-section>
+                    <q-item-label><a href="https://crie.utp.edu.co/noticias/">Noticias</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Contáctenos')">
+                  <q-item-section>
+                    <q-item-label><a href="https://crie.utp.edu.co/contactenos/">Contáctenos</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Servicios')">
+                  <q-item-section>
+                    <q-item-label><a href="https://crie.utp.edu.co/servicios/">Servicios</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('CRIEin')">
+                  <q-item-section>
+                    <q-item-label><a href="https://crie.utp.edu.co/category/criein/">CRIEin</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+          </q-btn-dropdown>
+        </div>
+        <div class="col-10 col-xl-9 d-none d-lg-block mobile-hide desktop-only">
+          <q-bar class=" menu-institucional">
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Inicio')">
+                <q-item-section>
+                  <q-item-label><a href="https://crie.utp.edu.co/">Inicio</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('CRIE')">
+                <q-item-section>
+                  <q-item-label><a href="https://crie.utp.edu.co/crie/">CRIE</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Noticias')">
+                <q-item-section>
+                  <q-item-label><a href="https://crie.utp.edu.co/noticias/">Noticias</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Contáctenos')">
+                <q-item-section>
+                  <q-item-label><a href="https://crie.utp.edu.co/contactenos/">Contáctenos</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('Servicios')">
+                <q-item-section>
+                  <q-item-label><a href="https://crie.utp.edu.co/servicios/">Servicios</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+            <q-list>
+              <q-item clickable v-close-popup @click="onItemClick('CRIEin')">
+                <q-item-section>
+                  <q-item-label><a href="https://crie.utp.edu.co/category/criein/">CRIEin</a></q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-bar>
+        </div>
+        <div class="col-2 col-xl-3 mobile-hide desktop-only q-my-sm">
+          <!--  -->
+
+        <!-- <q-form class="row buscador">
+          <q-input outlined bg-color="white" placeholder="Busqueda">
+
+          </q-input>
+          <q-btn icon="search" bg-color="primary"></q-btn>
+        </q-form> -->
+        <!-- --------------------------Buscador arriba uwu------------------------ -->
+        <div class="col-12">
+          <form role="search" id="cse-search-box" method="get" class=" input-group input-group-sm" action="https://crie.utp.edu.co/">
+            <div style="width: 90%;">
+              <input name="ie" value="UTF-8" type="hidden">
+              <input class="form-control no-border-radius" type="search" aria-label="Google Search" placeholder="Busqueda" value="" name="s">
+            </div>
+
+            <button class="input-group-text bi btn-primary bi-search rounded-end" aria-label="Buscador" aria-hidden="false" style="padding-bottom: 0; border-bottom-width: 0px;"></button>
+
+            <input id="buscar" name="siteurl" value="www.utp.edu.co/" type="hidden">
           </form>
         </div>
-      </div>
-    </div>
+        </div>
+        <div class="col-5 mobile-only desktop-hide">
+          <form role="search" id="cse-search-box" method="get" class="input-group input-group-sm" action="https://crie.utp.edu.co/">
+            <label class="sr-only">
+                <span class="d-none screen-reader-text">Buscar:</span>
+            </label>
+            <input name="ie" value="UTF-8" type="hidden">
+            <input class="form-control" type="search" aria-label="Google Search" placeholder="Busqueda" value="" name="s">
+            <button class="input-group-text bi btn-primary bi-search rounded-end" aria-label="Buscador" aria-hidden="false"></button>
+            <input id="buscar" name="siteurl" value="www.utp.edu.co/" type="hidden">
+          </form>
+        </div>
+      </section>
+	  </header>
 
     <!-- fin cabecera para Postgrados-->
     <!-- ======================================================================================================================= -->
+  <main id="contenido" class="cuerpo-contenido">
 
-    <div class="cuerpo-contenido">
+	  <div class="">
       <div class="row cuerpo">
-        <div class="hidden-print col-lg-12 col-md-12">
+        <div class="hidden-print col-lg-12 col-md-12 my-4">
           <ol class="breadcrumb">
             <li>
               <a
-                href="https://crie.utp.edu.co/inicio.html"
+                href="https://crie.utp.edu.co/"
                 title="pagina de inicio"
                 >Inicio</a
               >
             </li>
             <li>
-              <a href="https://crie.utp.edu.co/salas.html" title="Salas"
+              <a href="https://crie.utp.edu.co/servicios/salas-especiales-de-formacion/" title="Salas"
                 >Salas</a
               >
             </li>
@@ -250,85 +279,7 @@
 
         <!-- Menu Contenido Izquierdo -->
 
-        <div
-          class="
-            col-lg-3 col-md-3
-            hidden-sm hidden-xs
-            menu_lateral_inicio
-            hidden-print
-          "
-        >
-          <ul
-            id="accordion"
-            class="
-              accordion
-              nav nav-list nav-department nav-tabs nav-stacked
-              menu_lateral
-            "
-          >
-            <li>
-              <a href="https://crie.utp.edu.co/quienes-somos.html"
-                >¿Quienes Somos?</a
-              >
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/funcionarios.html"
-                >Quiénes hacen parte de ella</a
-              >
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/direccion.html">Dirección</a>
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/academia-cisco.html"
-                >Academia Cisco</a
-              >
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/capacitacion.html"
-                >Capacitación</a
-              >
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/desarrollo-web.html"
-                >Desarrollo Web</a
-              >
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/diseno-grafico.html"
-                >Diseño Gráfico</a
-              >
-            </li>
-            <li><a href="https://crie.utp.edu.co/red.html">Red</a></li>
-            <li><a href="https://crie.utp.edu.co/salas.html">Salas</a></li>
-            <li><a href="http://crie.utp.edu.co/television/">Televisión</a></li>
-            <li>
-              <a href="https://crie.utp.edu.co/gestion-calidad.html"
-                >Gestión Calidad</a
-              >
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/contacto.html">Contáctenos</a>
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/lineamientos-y-politicas.html"
-                >Lineamientos y Políticas</a
-              >
-            </li>
-            <li>
-              <a href="https://imageneidentidad.utp.edu.co/" target="_blank"
-                >Centro Virtual de Imagen e identidad UTP</a
-              >
-            </li>
-            <!-- <li><a href="https://crie.utp.edu.co/crie/firma.html" >Generador de Firmas</a></li> -->
-            <li>
-              <a href="https://crie.utp.edu.co/portal-utp.html">Portal UTP</a>
-            </li>
-            <li>
-              <a href="https://crie.utp.edu.co/criein.html">Noticias CRIEin</a>
-            </li>
-          </ul>
-        </div>
+
         <!-- Fin Menu Contenido Izquierdo-->
 
         <!-- Contenido Noticias -->
@@ -336,14 +287,17 @@
           <router-view />
         </div>
       </div>
+    </div>
 
       <!-- ==================================================================================================================================================== -->
       <!-- fin del content -->
+  </main>
+
 
       <!-- pie de página -->
       <!-- ==================================================================================================================================================== -->
       <!-- Menú inferior-->
-      <div class="row text-center menu_inferior_plantilla hidden-print">
+      <!-- <div class="row text-center menu_inferior_plantilla hidden-print">
         <a href="https://crie.utp.edu.co/inicio.html" title="Inicio">Inicio</a>
         <a href="https://www.utp.edu.co/" title="Página Principal"
           >Universidad Tecnológica de Pereira</a
@@ -354,171 +308,62 @@
         <a href="https://crie.utp.edu.co/mapa.html" title="Mapa del Sitio"
           >Mapa del Sitio</a
         >
-      </div>
+      </div> -->
       <!--Fin Menú inferior-->
 
-      <footer>
-        <div class="container informacion_pie">
-          <div class="container hidden-print">
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row-redes">
-                <a
-                  href="https://www.facebook.com/utpereira/"
-                  aria-label="Facebook UTP"
-                  target="_blank"
-                  rel="noopener"
-                  data-toggle="tooltip"
-                  title="Facebook UTP"
-                  ><img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/facebookg.png"
-                    alt="facebook"
-                /></a>
-                <a
-                  href="https://twitter.com/UTPereira"
-                  aria-label="Twitter UTP"
-                  target="_blank"
-                  rel="noopener"
-                  data-toggle="tooltip"
-                  title="Twitter UTP"
-                  ><img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/twitterg.png"
-                    alt="twitter"
-                /></a>
-                <a
-                  href="https://www.youtube.com/user/utpereira"
-                  aria-label="YouTube UTP"
-                  target="_blank"
-                  rel="noopener"
-                  data-toggle="tooltip"
-                  title="YouTube UTP"
-                  ><img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/youtubeg.png"
-                    alt="youtube"
-                /></a>
-                <a
-                  href="https://www.instagram.com/UTPereira/"
-                  aria-label="Instgram UTP"
-                  target="_blank"
-                  rel="noopener"
-                  data-toggle="tooltip"
-                  title="Instagram UTP"
-                  ><img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/instagramg.png"
-                    alt="instagram"
-                /></a>
-                <a
-                  href="https://co.linkedin.com/school/universidad-tecnol-gica-de-pereira/"
-                  aria-label="Linkedin UTP"
-                  target="_blank"
-                  rel="noopener"
-                  data-toggle="tooltip"
-                  title="Linkedin UTP"
-                  ><img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/linkeding.png"
-                    alt="facebook"
-                /></a>
-                <a
-                  href="https://www.utp.edu.co/atencionalciudadano/herramientas-y-ayuda.html"
-                  aria-label="Ayuda al Cuidadano"
-                  target="_blank"
-                  rel="noopener"
-                  data-toggle="tooltip"
-                  title="Aplicacion Movil UTP"
-                  ><img
-                    src="./Recursos Informáticos y Educativos CRIE __ Solicitud Sala de Cómputo Para Docentes_files/portalg.png"
-                    alt="utp"
-                /></a>
-              </div>
-            </div>
-            <div class="row">
-              <div
-                class="
-                  col-xs-12 col-sm-4 col-md-4 col-lg-4
-                  informacion-contacto
-                "
-              >
-                <strong class="texto-pie">Contacto</strong><br /><br />
-                Llámanos<br />
-                Tel: +57 6 3137141 Fax: 3137107<br />
-                Conmutador: (57) (6) 313 7300 <br /><br />
-                Correos:<br />
-                <a href="mailto:contactenos@utp.edu.co"
-                  >contactenos@utp.edu.co</a
-                ><br /><br />
-                Dirección<br />
-                Recursos Informáticos y Educativos - CRIE<br />
-                Carrera 27 #10-02 Barrio Álamos Pereira, Risaralda<br />
-                Edificio 3 - oficina 307
-              </div>
-              <div
-                class="
-                  col-xs-12 col-sm-8 col-md-8 col-lg-8
-                  informacion-institucional
-                "
-              >
-                <br /><br />
-                © 2020 -
-                <strong class="texto-pie"
-                  >Universidad Tecnológica de Pereira</strong
-                >
-                -
-                <a
-                  href="https://www.utp.edu.co/acreditacion/historia-de-la-acreditacion-utp.html"
-                  aria-label="Leer Acreditacion"
-                  >Reacreditada institucionalmente en 2021, con vigencia de 10
-                  años</a
-                >
-                - Sujeta a inspección y vigilancia<br />
-                <br />Carrera 27 #10-02 Barrio Álamos - Risaralda - Colombia -
-                AA: 97 - Código postal: 660003 -
-                <a
-                  href="https://www.utp.edu.co/registro/19/ceres"
-                  aria-label="Leer Ceres"
-                  >CERES</a
-                ><br />
-                <br />PBX: +57 6 3137300 - Fax: +57 6 3213206 - Línea gratuita
-                de Quejas y Reclamos: 018000966781 -
-                <strong
-                  >contactenos<span style="display: none">null</span>@<span
-                    style="display: none"
-                    >null</span
-                  >utp.<span style="display: none">null</span>edu.co</strong
-                ><br />
-                <br /><strong class="texto-pie">Horario de atención:</strong>
-                Lunes a Viernes de 8:00am a 12:00m y de 2:00pm a 6:00pm<br />
-                <br />Institución de Educación Superior vigilada por
-                MinEducación<br />
-                <a
-                  href="https://www.utp.edu.co/cms-utp/data/bin/UTP/web/uploads/media/calidad/archivos/1313-MGD-01_V4_Manual_General_de_Directrices_del_SGSI.pdf"
-                  aria-label="Leer Politicas"
-                  >Políticas de Seguridad de la Información</a
-                >
-                -
-                <a
-                  href="https://www.utp.edu.co/secretaria/informacion-general/678/notificaciones-judiciales"
-                  aria-label="Leer Notificacion"
-                  >Notificaciones Judiciales</a
-                ><br /><br />
+  <footer class="row footer-main pt-3 pb-3" role="contentinfo" id="pie-de-pagina">
 
-                Desarrollado por:
-                <a
-                  href="https://crie.utp.edu.co/desarrollo-web"
-                  aria-label="Ir a pagina del crie"
-                  >Recursos Informáticos y Educativos, Desarrollo y
-                  Administración Web UTP</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+    <div class="row col-12 align-content-center footer-main__contacto mb-4">
+      <h2 class="col-5 desktopShow footer-main__title">
+        <strong>Contacto</strong>
+      </h2>
+
+      <div class="col-12 col-sm-7 text-end">
+        <a href="https://www.facebook.com/utpereira/" aria-label="Facebook UTP" target="_blank" rel="noopener" data-bs-toogle="tooltip" title="Facebook UTP"><img src="//media.utp.edu.co/cms/img/iconos-redes-gris/facebookg.png" alt="facebook"></a>
+        <a href="https://twitter.com/UTPereira" aria-label="Twitter UTP" target="_blank" rel="noopener" data-bs-toogle="tooltip" title="Twitter UTP"><img src="//media.utp.edu.co/cms/img/iconos-redes-gris/twitterg.png" alt="twitter"></a>
+        <a href="https://www.youtube.com/user/utpereira" aria-label="YouTube UTP" target="_blank" rel="noopener" data-bs-toogle="tooltip" title="YouTube UTP"><img src="//media.utp.edu.co/cms/img/iconos-redes-gris/youtubeg.png" alt="youtube"></a>
+        <a href="https://www.instagram.com/UTPereira/" aria-label="Instgram UTP" target="_blank" rel="noopener" data-bs-toogle="tooltip" title="Instagram UTP"><img src="//media.utp.edu.co/cms/img/iconos-redes-gris/instagramg.png" alt="instagram"></a>
+        <a href="https://co.linkedin.com/school/universidad-tecnol-gica-de-pereira/" aria-label="Linkedin UTP" target="_blank" rel="noopener" data-bs-toogle="tooltip" title="Linkedin UTP"><img src="//media.utp.edu.co/cms/img/iconos-redes-gris/linkeding.png" alt="facebook"></a>
+        <a href="https://www.utp.edu.co/atencionalciudadano/herramientas-y-ayuda.html" aria-label="Ayuda al Cuidadano" target="_blank" rel="noopener" data-bs-toogle="tooltip" title="Aplicacion Movil UTP"><img src="//media.utp.edu.co/cms/img/iconos-redes-gris/portalg.png" alt="utp"></a>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-5 footer-main__contacto-info">
+        <h2 class="mb-3 mobileShow footer-main__title"><strong>Contacto</strong></h2>
+        <p class="mb-0"><strong>Llámanos:</strong></p>
+        <p class="mb-0">Teléfono: +57 606 3137141 Fax: :  3137107</p>
+        <p class="mb-0">Conmutador: (57) 606 313 7300</p>
+        <br>
+        <p class="mb-0">Correo: <a href="mailto:contactenos@utp.edu.co?Subject=Correo%20de%20contacto%20"><strong>contactenos@utp.edu.co</strong></a></p>
+        <br>
+        <p class="mb-0"><strong>Dirección:</strong></p>
+        <p class="mb-0">Recursos Informáticos y Educativos - CRIE</p>
+        <p class="mb-0">Carrera 27 #10-02 Barrio Álamos Pereira, Risaralda</p>
+        <p class="mb-0">Edificio 3 - Oficina 307</p>
+    </div>
+
+
+    <div class="col-12 col-sm-7 generalInfo">
+        <p> © 2022 - <a href="//www.utp.edu.co" aria-label="Portal UTP"></a>Universidad Tecnológica de Pereira - <a href="//www.utp.edu.co/acreditacion/historia-de-la-acreditacion-utp.html" aria-label="Leer Acreditacion">Reacreditada institucionalmente en 2021, con vigencia de 10 años </a>- Sujeta a inspección y vigilancia</p>
+        <br>
+        <p>Carrera 27 #10-02 Barrio Álamos - Risaralda - Colombia - AA: 97 - Código postal: 660003 - <a href="//www.utp.edu.co/registro/19/ceres" aria-label="Leer Ceres">CERES</a><br></p>
+        <br>
+        <p>PBX: +57 606 3137300 - Fax: +57 6 3213206 - Línea gratuita de Quejas y Reclamos: 018000966781 - <b><a href="mailto:contactenos@utp.edu.co?Subject=Correo%20de%20contacto%20" style="color:#000000">contactenos@utp.edu.co</a></b></p>
+        <p><b>Horario de atención:</b> Lunes a Viernes de 8:00am a 12:00m y de 2:00pm a 6:00pm</p>
+        <br>
+        <p>Institución de Educación Superior vigilada por <a href="https://www.mineducacion.gov.co/portal/" aria-label="Ministeria de Educación">MinEducación</a></p>
+        <p><a href="//www.utp.edu.co/cms-utp/data/bin/UTP/web/uploads/media/calidad/archivos/1313-MGD-01_V4_Manual_General_de_Directrices_del_SGSI.pdf" aria-label="Leer Politicas">Políticas de Seguridad de la Información</a> - <a href="//www.utp.edu.co/secretaria/informacion-general/678/notificaciones-judiciales" aria-label="Leer Notificacion">Notificaciones Judiciales</a></p>
+        <br>
+        <p>Desarrollado por: <a href="//crie.utp.edu.co/desarrollo-web" aria-label="Ir a pagina del crie">Recursos Informáticos y Educativos, Desarrollo y Administración Web UTP</a></p>
+    </div>
+	</footer>
       <!-- ===================================================================================================================================================== -->
       <!-- fin pie de página -->
     </div>
 
     <!-- ===================================================================================================================================================== -->
     <!-- fin del menu responsive superior-->
-  </div>
+
 </template>
 
 <script>

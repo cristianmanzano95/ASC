@@ -20,67 +20,199 @@
   left: 2%;
 }
 
+/*-----------------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+/* @font-face {
+  font-family: 'Myriad Pro Cond';
+  src: url('./fonts/myriad-pro-Cond.eot');
+  src: url('./fonts/myriad-pro-Cond.eot?#iefix') format('embedded-opentype'), url('./fonts/myriad-pro-Cond.woff') format('woff'), url('/fonts/myriad-pro-Cond.ttf') format('truetype'), url('/fonts/myriad-pro-Cond.svg#Impact') format('svg');
+}
+
+@font-face {
+  font-family: 'Myriad Pro Cond It';
+  src: url('./fonts/myriad-pro-CondIT.eot');
+  src: url('./fonts/myriad-pro-CondIT.eot?#iefix') format('embedded-opentype'), url('./fonts/myriad-pro-CondIT.woff') format('woff'), url('fonts/myriad-pro-CondIT.ttf') format('truetype'), url('fonts/myriad-pro-CondIT.svg#Impact') format('svg');
+} */
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('./fonts/Oswald-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto-Regular.ttf');
+}
+footer{
+  font-family: 'Roboto';
+
+}
+
+.menuInferior {
+  text-align: center;
+  margin:10px 0;
+}
+
+.menuInferior ul {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.anclaInferior {
+  position: fixed;
+  z-index: 1000;
+  border-radius: 5px;
+  background-color: #004278;
+  left: 94%;
+  bottom: 2%;
+  font-size: 15pt;
+  border: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.anclaInferior a{
+  color: #fff;
+}
+
+.anclaInferior:hover{
+  background-color: #184d70;
+}
+
 
 /* fin estilos que dan efecto 3d a los div donde estan las rede sociales*/
 
-footer {
+.footer-main {
   background-color: #BCBDC0;
-  margin-bottom: 20px;
-  font-size: 9pt;
-  color: #000000;
+  color: #313030;
+  padding: 20px;
 }
 
-footer b,
-footer strong {
-  background-color: #808285;
-  padding: 2px;
-}
 
 footer p {
   margin: 0;
 }
 
-.row-redes {
-  text-align: right;
+.footer-main p {
+  font-size: 14px;
+}
+
+.footer-main__title {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  font-family: 'Roboto';
+  line-height: 1.2;
+}
+
+.footer-main a {
+  text-decoration: none;
+  color: #004278;
+}
+
+b, strong {
+  font-weight: 700;
 }
 
 .informacion-contacto,
 .informacion-institucional {
   padding: 30px;
-  padding-bottom: 0;
 }
+
+.desktopShow{
+  display: none;
+}
+
+.mobileShow{
+  display: block;
+}
+
+.footer-main__contacto-info{
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.footer-main__title{
+  margin-bottom: 1rem;
+}
+
+.text-end{
+  text-align: center !important;
+}
+
+.row>*{
+  max-width: 100%;
+  /* padding-left: calc(1.5rem * .5); */
+  /* padding-right: calc(1.5rem * .5); */
+}
+
+
 
 @media (min-width: 992px) {
-  #menuInferior ul>li:before {
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 18px;
-    content: "|";
-    color: #0f3d6a;
+  .menuInferior ul>li:before {
+      padding-left: 5px;
+      padding-right: 5px;
+      font-size: 18px;
+      content: "|";
+      color: #004278;
   }
-
-  #menuInferior ul>li:last-child:after {
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 18px;
-    content: "|";
-    color: #0f3d6a;
+  .menuInferior ul>li:last-child:after {
+      padding-left: 5px;
+      padding-right: 5px;
+      font-size: 18px;
+      content: "|";
+      color: #004278;
   }
-}
-
-@media (max-width: 992px) {
-  #menuInferior ul {
+  .menuInferior ul {
     display: block;
-  }
-
-  #menuInferior li {
+}
+.menuInferior li {
     border: 3px solid #fff;
     -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.23);
     -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.23);
     box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.23);
+}
+.informacion-contacto {
+    text-align: center;
+}
+.anclaInferior {
+    left: 86%;
+}
+}
+
+@media (max-width: 992px) {
+
+}
+
+@media (min-width: 575px){
+  .text-end{
+    text-align: end !important;
+  }
+  .footer-main__contacto-info{
+      text-align: start;
+  }
+  .mobileShow{
+    display: none;
   }
 
-  .informacion-contacto {
-    text-align: center;
+  .footer-main__title{
+    padding: 0;
+  }
+  .footer-main__contacto-info, .footer-main__contacto{
+    margin-bottom: 20px;
+  }
+  .desktopShow{
+    display: block;
+    margin-top: 0;
+  }
+  .col-sm-7{
+    flex: 0 0 auto;
+    width: 58.33333333% !important;
+  }
+
+  .col-sm-5{
+    flex: 0 0 auto;
+    width: 41.66666667% !important;
   }
 }

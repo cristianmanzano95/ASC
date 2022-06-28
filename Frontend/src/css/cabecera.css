@@ -1,7 +1,306 @@
-#tituloSup,
-#tituloSitio {
-  font-family: 'Myriad Pro Cond';
+:root {
+  --institucional: #004278;
+  --blanco: #ffffff;
+  --gris: #BCBDC0;
 }
+
+@font-face {
+  font-family: 'Myriad Pro Cond';
+  src: url('./fonts/myriad-pro-Cond.eot');
+  src: url('./fonts/myriad-pro-Cond.eot?#iefix') format('embedded-opentype'), url('./fonts/myriad-pro-Cond.woff') format('woff'), url('/fonts/myriad-pro-Cond.ttf') format('truetype'), url('/fonts/myriad-pro-Cond.svg#Impact') format('svg');
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('./fonts/Oswald-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto-Regular.ttf');
+}
+footer{
+  font-family: 'Roboto';
+
+}
+
+ul{
+  list-style: none;
+}
+
+.menu-estandar > li > a {
+  color: #fff;
+  font-size: 14px;
+}
+
+.titulo{
+  padding-left: 10px !important;
+}
+
+.titulositio h1{
+  font-size: 16pt;
+  line-height: 1.2;
+  font-family: 'Roboto';
+  padding: 0;
+  margin: 0;
+}
+
+.titulositio h1 {
+  position: absolute;
+  color: var(--blanco);
+  width: 100%;
+  display: block;
+  text-align: right;
+  bottom: 0;
+  padding: 2% 10%;
+  text-shadow: 1px 2px 4px #000000;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.titulositio h1{
+  font-size: 26pt;
+  font-family: 'Roboto';
+}
+
+
+.menu-estandar > li >a:hover{
+  color: white;
+  text-decoration: underline;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.tituloSup,
+.tituloSitio {
+    font-family: 'Myriad Pro Cond';
+    color: white;
+    font-size: 16pt;
+}
+
+
+
+.menu-estandar li{
+  padding-right: 0;
+}
+
+.menu-top-center{
+  justify-content: center;
+}
+
+.menu-institucional a{
+  color: white;
+  padding:0 16px;
+
+}
+
+.rounded-end{
+  border-top-right-radius: .25rem !important;
+  border-bottom-right-radius: .25rem !important;
+}
+
+
+
+.tituloIup {
+  font-family: 'Myriad Pro Cond';
+  line-height: 1;
+  padding-top: 3px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.logo-titulo{
+  margin: 5px 0;
+}
+
+.imagen-banner > img{
+  width: 100%;
+  height: auto;
+}
+
+.bannerSuperior {
+  height: 90px;
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 5px 0 5px 0;
+}
+
+.bannerSuperior a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.row_cabecera {
+  background-color: var(--institucional);
+}
+
+.logo {
+  /* max-width: 100%; */
+  max-height: 64px;
+  padding-right: 5px;
+}
+
+.logos-top{
+  height: 90px;
+}
+
+.logo2 {
+  max-width: 100%;
+  max-height: 64px;
+}
+
+.vl {
+  height: 48px !important;
+  border-right: 2px solid var(--blanco);
+  width: 2px;
+  padding: 0 2px;
+}
+
+.subrayado{
+  text-decoration: none;
+}
+
+.imagen-banner{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.imgPorDefecto img {
+  width: 100%;
+  height: auto;
+}
+
+.menu > li > a:hover {
+  text-decoration: underline;
+}
+
+.sliderprincipal {
+  position: relative;
+}
+
+.buscador > label > div{
+  padding-right: 0 !important;
+}
+
+.menu-institucional .q-field__control{
+  height: 31px;
+}
+
+.menu-institucional .q-item{
+  min-height: 31px;
+  padding: 0 0;
+}
+
+.buscador.row label{
+  padding-right: 0 !important;
+}
+
+/* section.menu-institucional{
+  padding-right: 0;
+} */
+
+.q-focus-helper{
+  padding-right: 0 !important;
+}
+
+
+
+.menu-institucional{
+  background-color: var(--institucional);
+  max-height: 74px;
+  align-items: center;
+}
+
+.row{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* .row>* {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+} */
+/*First level item arrows*/
+
+@media (min-width: 375px) {
+  .logo{
+      height: 50px;
+      border-right: none;
+  }
+  .text-end{
+      text-align: end!important;
+  }
+}
+
+@media (min-width: 576px) {
+
+  .logo{
+      height: 54px;
+  }
+  .logo2{
+    height: 60%;
+    /* width: 80%; */
+  }
+}
+
+/* @media (min-width: 576px) {
+  .text-end{
+      text-align: center!important;
+  }
+  .logo{
+      height: 54px;
+  }
+  .logo2{
+    height: 60%;
+    width: 80%;
+
+  }
+} */
+
+
+
+@media (min-width:768px) {
+
+  .vl {
+      padding: 0;
+  }
+  section.logo-ministerio{
+      padding-right: 0;
+  }
+  /* .logo2 {
+      max-width: 72%;
+  } */
+}
+
+@media (min-width: 992px) {
+  .row_cabecera{
+      padding:12px 12px;
+  }
+}
+
+
+@media (min-width:1200px) {
+  .container-menu-superior{
+      padding-left: 0;
+
+  }
+  .logo-titulo{
+      padding-right: 0;
+  }
+  /* section.menu-institucional div{
+      padding-right: 16px;
+      padding-left: 16px;
+  } */
+
+}
+/*-----------------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
 
 #bannerSuperior {
   height: 90px;
@@ -17,7 +316,7 @@
 }
 
 #row_cabecera {
-  background-color: #0f3d6a;
+  background-color:var(--institucional);
 }
 
 #logo {
@@ -98,7 +397,7 @@
 }
 
 #menuSuperior ul ul li:hover {
-  background: #0f3d6a;
+  background: #ffffff;
 }
 
 #menuSuperior ul li:hover>ul {
@@ -334,8 +633,9 @@
   }
 
   #tituloSup {
-    border-bottom: 1px solid #ffffff;
-    padding-bottom: 2px;
+    font-family: 'Myriad Pro Cond';
+    color: white;
+    font-size: 16pt;
   }
 
   #tituloSitio {
@@ -352,9 +652,9 @@
   }
 
   #tituloSitio {
-    margin: 0;
-    font-size: 15pt;
-    text-align: center;
+    font-family: 'Myriad Pro Cond';
+    color: white;
+    font-size: 16pt;
   }
 
   #personajes {

@@ -1,5 +1,6 @@
 {
 
   "vetur.experimental.templateInterpolationService": true,
-  "vetur.validation.interpolation": false
+  "vetur.validation.interpolation": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

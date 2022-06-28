@@ -1,6 +1,5 @@
 footer {
     background-color: #BCBDC0;
-    margin-bottom: 20px;
 }
 .container.informacion_pie,
 .container.informacion_pie > .container {
@@ -46,7 +45,7 @@ footer {
 }
 
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) { 
+@media (min-width: 992px) and (max-width: 1199.98px) {
 
     .container.informacion_pie {
         width: 100% !important;
@@ -61,7 +60,7 @@ footer {
 @media (min-width: 1200px) {
 
 
-    .container.informacion_pie > ..container > .row > .row-redes {
+    .container.informacion_pie > .container > .row > .row-redes {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
@@ -69,7 +68,7 @@ footer {
     .container.informacion-contacto {
         padding-left: 0 !important;
     }
-    
+
     .container.informacion-institucional {
         padding-right: 0 !important;
     }
