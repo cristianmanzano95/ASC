@@ -10,6 +10,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+
         // utp es para docentes y adminsitrativos pruebas es para estudiantes
         // $user = "uid=consultasweb,dc=utp"; //ruta completa del usuario en el directorio
 
@@ -57,7 +58,7 @@ class AuthController extends Controller
                 //Se toma la fechahora actual y se le suma el tiempo de sesión (30 minutos)
                 $DateAndTime = new Datetime('America/Bogota');
                 $fecha = $DateAndTime->format('Y-m-d H:i:s');
-                $expiracion = $DateAndTime->modify('+30 minutes')->format('Y-m-d H:i:s');
+                $expiracion = $DateAndTime->modify('+60 minutes')->format('Y-m-d H:i:s');
 
                 // Se crea el token con el formato idtercero.fecha_expiracion.usuario y se guarda en la base de datos
                 $token = base64_encode($info[0]['idtercero'][0] . "." . $expiracion .".".$usuario);
@@ -151,9 +152,11 @@ class AuthController extends Controller
                     //Se toma la fechahora actual y se le suma el tiempo de sesión (30 minutos)
                     $DateAndTime = new Datetime('America/Bogota');
                     $fecha = $DateAndTime->format('Y-m-d H:i:s');
-                    $expiracion = $DateAndTime->modify('+30 minutes')->format('Y-m-d H:i:s');
+                    $expiracion = $DateAndTime->modify('+60 minutes')->format('Y-m-d H:i:s');
                     // Se crea el token con el formato idtercero.fecha_expiracion.usuario y se guarda en la base de datos
                     $token = base64_encode($info[0]['idtercero'][0] . "." . $expiracion .".".$usuario);
+                    error_log("token");
+                    error_log($token);
                     DB::connection('oracleCRIE')->insert("
                         INSERT INTO Token (
                             idtercero,

@@ -23,6 +23,7 @@ class Authentication
         if($request->header('Authorization')){
 
             //Se busca el token en la base de datos
+            // Token = '".$request->header('Authorization')."' AND expiracion > CURRENT_TIMESTAMP ");
             $token = DB::connection('oracleCRIE')->select("SELECT * FROM Token WHERE Token = '".$request->header('Authorization')."' AND expiracion > CURRENT_TIMESTAMP ");
             //error_log($token[0]);
             //Si existe el token

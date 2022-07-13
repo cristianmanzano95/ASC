@@ -7,7 +7,7 @@
     <h1>Hola, {{$formulario['nombre']}}.</h1>
     <p>Se ha realizado un cambio en su solicitud para {{$formulario['nombre_asignatura']}} - COD {{$formulario['codigo_asignatura']}} fue aceptada y asignada de la siguiente manera:</p>
     <p>&nbsp;</p>
-    @foreach ($horarios as $value) 
+    @foreach ($horarios as $value)
 
     @if($value->dia == 1)
         <p>Día: Lunes</p>
@@ -39,8 +39,8 @@
         @endif
         <p>&nbsp;</p>
 
-    @endforeach 
-   
-    <p>Thank you</p>
+    @endforeach
+
+    <p>Muchas Gracias!.</p>
 </body>
 </html>
