@@ -57,10 +57,6 @@ ul{
   background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
 }
 
-.titulositio h1{
-  font-size: 26pt;
-  font-family: 'Roboto';
-}
 
 
 .menu-estandar > li >a:hover{
@@ -111,6 +107,7 @@ ul{
   padding-top: 3px;
   color: white;
   text-transform: capitalize;
+  margin-left: 1.5rem;
 }
 
 .logo-titulo{
@@ -145,6 +142,10 @@ ul{
   padding-right: 5px;
 }
 
+i.q-icon.notranslate.q-btn-dropdown__arrow.q-btn-dropdown__arrow-container {
+  display: none;
+}
+
 .logos-top{
   height: 90px;
 }
@@ -159,6 +160,7 @@ ul{
   border-right: 2px solid var(--blanco);
   width: 2px;
   padding: 0 2px;
+  margin-left: 1.5rem;
 }
 
 .subrayado{
@@ -216,10 +218,11 @@ ul{
   align-items: center;
 }
 
-.row{
+
+/* .row{
   margin-left: 0;
   margin-right: 0;
-}
+} */
 
 /* .row>* {
   padding-right: 0 !important;
@@ -248,6 +251,8 @@ ul{
   }
 }
 
+
+
 /* @media (min-width: 576px) {
   .text-end{
       text-align: center!important;
@@ -270,7 +275,7 @@ ul{
       padding: 0;
   }
   section.logo-ministerio{
-      padding-right: 0;
+      padding-right: 12px;
   }
   /* .logo2 {
       max-width: 72%;
@@ -278,9 +283,7 @@ ul{
 }
 
 @media (min-width: 992px) {
-  .row_cabecera{
-      padding:12px 12px;
-  }
+
 }
 
 
@@ -630,6 +633,7 @@ ul{
 @media (min-width: 992px) {
   #menuLateralResponsive {
     display: none;
+
   }
 
   #tituloSup {
@@ -642,6 +646,10 @@ ul{
     margin: 10px 0 0 0;
     padding: 0 0 0 5px;
     font-size: 12pt;
+  }
+
+  button.q-btn.q-btn-item.non-selectable.no-outline.without-icon.hidden-xl.desktop-only.mobile-hide.q-btn--standard.q-btn--rectangle.bg-grey-5.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn-dropdown.q-btn-dropdown--simple {
+    display: none;
   }
 }
 
@@ -803,4 +811,6 @@ ul{
   #titInicio h1 {
     font-size: 40pt;
   }
+
+
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+// import axios from "src/boot/axios";
 // import example from './module-example'
 
 Vue.use(Vuex)

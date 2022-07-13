@@ -8,6 +8,7 @@ const dateFormatHour = valor => {
   let newDate = new Date(valor);
   return date.formatDate(newDate, "YYYY-MM-DD h:mm a");
 };
+
 export default ({ Vue }) => {
   const events = new Vue({});
   Vue.prototype.$diasDic = {

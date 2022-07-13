@@ -3,137 +3,242 @@
 <template>
   <div>
     <!-- ===================================================================================================================================================== -->
-    <header id="header">
+    <div class="row">
+      <div class="row col-12 items-center content-around">
+        <!-- se hace el llamado al slider y al menú de cada facultad -->
 
-          <!-- sección del banner superior -->
-      <section class="row col-12 items-center content-around row_cabecera">
-        <!--Menu desplegable parte superior izquierda-->
-        <div class="col-1 desktop-hide">
-            <q-btn-dropdown color="grey-5" icon="menu">
-              <q-list>
-                <q-item clickable v-close-popup @click="onItemClick('Inicio')">
+        <!-- éste include llama al archivo seccion_superior donde esta la cabecera de los sitios -->
+        <div class="header col-12 container_principal">
+          <div class="row row_cabecera">
+
+            <!-- Desplegable parte superior -->
+            <div class="col-2">
+              <q-btn-dropdown class="" color="grey-4" icon="menu">
+                <q-list>
+                  <q-item clickable v-close-popup @click="onItemClick('Inicio')">
+                    <q-item-section>
+                      <q-item-label><a href="https://www.utp.edu.co/">Inicio</a></q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+                <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Accesibilidad')">
                   <q-item-section>
-                    <q-item-label><a href="https://www.utp.edu.co/">Inicio</a></q-item-label>
+                    <q-item-label><a href="https://www.utp.edu.co/principal/accesibilidad.php">Accesibilidad</a></q-item-label>
                   </q-item-section>
                 </q-item>
               </q-list>
               <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Accesibilidad')">
-                <q-item-section>
-                  <q-item-label><a href="https://www.utp.edu.co/principal/accesibilidad.php">Accesibilidad</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-             <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Mapa del Sitio')">
-                <q-item-section>
-                  <q-item-label><a href="https://www.utp.edu.co/principal/mapa.php">Mapa del Sitio</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Atención al Ciudadano')">
-                <q-item-section>
-                  <q-item-label><a href="https://www.utp.edu.co/atencionalciudadano/">Atención al Ciudadano</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('PQRS')">
-                <q-item-section>
-                  <q-item-label><a href="https://pqrs.utp.edu.co/">PQRS</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Correo')">
-                <q-item-section>
-                  <q-item-label><a href="https://www.utp.edu.co/correo">Correo</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('RSS')">
-                <q-item-section>
-                  <q-item-label><a href="https://www.utp.edu.co/feed.php">RSS</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            </q-btn-dropdown>
-        </div>
-
-          <!-- logo de la UTP -->
-
-        <section class="row col-sm-3 text-center text-sm-start logo-titulo ">
-            <!-- contenedor img -->
-          <div class="row items-center col-12 titulo">
-            <a class="subrayado" href="http://www.utp.edu.co/" rel="noopener norreferer" title="UTP" target="_blank">
-              <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/logoutp.png" title="Universidad Tecnológica de Pereira" alt="Logo Universidad Tecnológica de Pereira" class="logo" style="margin-left: 1rem;">
-            </a>
-            <!-- linea vertical -->
-            <div class="d-none d-sm-block vl col-1 ms-4"></div>
-            <!-- fin linea -->
-
-            <!-- texto facultades -->
-            <div class="col-sm-5 d-none d-sm-block text-start q-ml-sm" style="text-align: left; margin-left: 1.5rem;">
-              <a href="https://crie.utp.edu.co">
-                <span class="tituloSup">CRIE</span>
-              </a>
-            </div>
-            <!-- fin texto facultades -->
+                <q-item clickable v-close-popup @click="onItemClick('Mapa del Sitio')">
+                  <q-item-section>
+                    <q-item-label><a href="https://www.utp.edu.co/principal/mapa.php">Mapa del Sitio</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Atención al Ciudadano')">
+                  <q-item-section>
+                    <q-item-label><a href="https://www.utp.edu.co/atencionalciudadano/">Atención al Ciudadano</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('PQRS')">
+                  <q-item-section>
+                    <q-item-label><a href="https://pqrs.utp.edu.co/">PQRS</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('Correo')">
+                  <q-item-section>
+                    <q-item-label><a href="https://www.utp.edu.co/correo">Correo</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              <q-list>
+                <q-item clickable v-close-popup @click="onItemClick('RSS')">
+                  <q-item-section>
+                    <q-item-label><a href="https://www.utp.edu.co/feed.php">RSS</a></q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+              </q-btn-dropdown>
           </div>
-          <!-- fin img -->
-        </section>
+          <!-- Desplegable parte superior -->
 
-          <!-- menu superior -->
-      <section class="col-sm-7">
-        <q-bar class=" menu-institucional" style="align-items: center; justify-content: center; ">
-          <div class="cursor-pointer"><a href="https://www.utp.edu.co/">Inicio</a></div>
-          <div class="cursor-pointer"><a href="https://www.utp.edu.co/principal/accesibilidad.php">Accesibilidad</a></div>
-          <div class="cursor-pointer"><a href="https://www.utp.edu.co/principal/mapa.php">Mapa del Sitio</a></div>
-          <div class="cursor-pointer"><a href="https://www.utp.edu.co/atencionalciudadano/">Atención al Ciudadano</a></div>
-          <div class="cursor-pointer"><a href="https://pqrs.utp.edu.co/">PQRS</a></div>
-          <div class="cursor-pointer"><a href="https://www.utp.edu.co/correoprueba">Correo</a></div>
-          <div class="cursor-pointer"><a href="https://www.utp.edu.co/feed.php">RSS</a></div>
-        </q-bar>
-      </section>
-        <!-- logo del ministerio de educación -->
-        <section class="col-6 col-sm-2 text-end logo-ministerio">
-          <a href="https://www.mineducacion.gov.co/" rel="noopener norreferer" title="Ministerio de Educación" target="_blank">
-            <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/ministerioeducacion.png" title="Ministerio de Educación" alt="Ministerio de Educación de Colombia" class="logo2">
-          </a>
-        </section>
 
-          <!-- </div> -->
+            <div class="container_cabecera row col-5">
 
-      </section>
-        <!-- fin sección del banner superior -->
-        <!-- sección del slider que se muestra en la página principal. -->
-      <section class="sliderprincipal">
-        <div class="slider1">
-          <!-- sección del slider que se muestra en la página principal. -->
-          <section class="imagen-banner">
-            <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/cabecera-principal.jpg" title="Universidad Tecnológica de Pereira">
+              <div class="row col-12 titulo-izq" >
+                <div class="img-izq-sup">
+                  <a
+                    href="https://www.utp.edu.co/"
+                    title="Universidad Tecnológica de Pereira"
+                    accesskey="1"
+                  >
+                    <img
+                      src="https://media2.utp.edu.co/imagenes/logoutp.png"
+                      id="img-izq-sup"
+                      alt="Escudo Universidad Tecnologica de Pereira"
+                      class="img-responsive margin-right-minE "
+                    />
+                  </a>
+                </div>
+                <!-- Linea vertical -->
+                <div class=" vl hidden-xs">
+                </div>
+
+                <div class="">
+
+                    <a class="" href="https://crie.utp.edu.co/inicio.html">
+                      <!-- las limeas siguientes acomoda el título en ´partes y puede ser llamado desde cuanquier parte de plantillaPosgrados -->
+                      <span class="tituloIup hidden-xs" style="">CRIE</span>
+                    </a>
+                  </div>
+              </div>
+
+            </div>
+
+
+          <!-- Menu superior -->
+              <nav class="menu_superior col-lg-6 hidden-md">
+                <ul class="menu_principal_facul hidden-xs ">
+                  <li>
+                    <a class="nav-link" href="https://crie.utp.edu.co/inicio.html">Inicio</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="https://www.utp.edu.co/principal/accesibilidad.php"
+                      >Accesibilidad</a
+                    >
+                  </li>
+                  <li>
+                    <a class="nav-link" href="https://crie.utp.edu.co/mapa.html"
+                      >Mapa del Sitio</a
+                    >
+                  </li>
+                  <li>
+                    <a class="nav-link" href="https://www.utp.edu.co/atencionalciudadano/"
+                      >Atención al Ciudadano</a
+                    >
+                  </li>
+                  <li><a class="nav-link" href="https://pqrs.utp.edu.co/">PQRS</a></li>
+                  <li>
+                    <a
+                      class="nav-link" href="https://accounts.google.com/signin/v2/identifier?continue=http%3A%2F%2Fmail.google.com%2Fa%2Futp.edu.co&amp;ltmpl=default&amp;hd=utp.edu.co&amp;service=mail&amp;sacu=1&amp;rip=1&amp;flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin"
+                      >Correo</a
+                    >
+                  </li>
+                  <li><a class="nav-link" href="https://www.utp.edu.co/feed.php">RSS</a></li>
+                </ul>
+              </nav>
+              <!-- fin menu superior -->
+
+              <div class="escudo_facul col-5">
+                <a
+                  href="https://www.mineducacion.gov.co/1621/w3-channel.html"
+                  title="Ministerio de Educacion"
+                  accesskey="2"
+                >
+                  <img
+                    src="https://media2.utp.edu.co/imagenes/ministerioeducacion.png"
+                    alt="Ministerio de Educación"
+                    class="logo-derecha"
+                  />
+                </a>
+              </div>
+
+          </div>
+
+          <!-- Banner -->
+          <section class="sliderprincipal">
+
+	          <div class="slider1">
+		          <!-- sección del slider que se muestra en la página principal. -->
+
+                <section class="imagen-banner">
+                  <img src="https://crie.utp.edu.co/wp-content/themes/crie/img/cabecera-principal.jpg" title="Universidad Tecnológica de Pereira">
+                </section>
+
+
+            </div>
+            <!-- fin sección del slider que se muestra en la página principal -->
+
+            <div class="titulositio">
+              <h1>Recursos Informáticos y Educativos</h1>
+            </div>
+
           </section>
-        </div>
-        <!-- fin sección del slider que se muestra en la página principal -->
 
-        <div class="titulositio">
-          <h1>Recursos Informáticos y Educativos</h1>
+          <!-- END Banner -->
+
+
+          <!-- <div id="sliderPosgrados">
+             Verifica si la cantidad de imagenes es mayor o igual a 1 -->
+
+            <!-- <div class="row row_carrusel">
+              <div
+                class="slider-facultad col-xs-12 col-sm-12 col-md-12 col-lg-12"
+              >
+                <div
+                  id="carousel-banner"
+                  class="carousel carousel-banner slide"
+                > -->
+                  <!-- Imágenes -->
+                  <!-- <div class="slider-fac">
+                      <img class="img-responsive item slider-fac"
+                        src="https://crie.utp.edu.co/wp-content/themes/crie/img/cabecera-principal.jpg" title="Universidad Tecnológica de Pereira">
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          <!-- </div> -->
         </div>
-      </section>
-        <!-- fin sección del slider que se muestra en la página principal -->
-      <section class="col-12 row align-items-center menu-institucional">
-        <div class="col-7 d-lg-none mobile-only desktop-hide">
-          <q-btn-dropdown color="grey-5" icon="menu">
-              <q-list>
-                <q-item clickable v-close-popup @click="onItemClick('Inicio')">
-                  <q-item-section>
-                    <q-item-label><a href="https://crie.utp.edu.co/">Inicio</a></q-item-label>
-                  </q-item-section>
-                </q-item>
-              </q-list>
-              <q-list>
+      </div>
+    </div>
+
+    <!-- menu parte inferior -->
+    <div class="row menu-nav color-back-menuInf ">
+      <div class=" col-12 ribbon-facultades hidden-print row">
+        <div class="menu-nav col-7">
+          <nav class="menu_superior col-lg-6 hidden-md">
+                <ul class="menu_principal_facul hidden-xs ">
+                  <li>
+                    <a class="nav-link" href="https://crie.utp.edu.co/inicio.html">Inicio</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="https://crie.utp.edu.co/crie/"
+                      >CRIE</a
+                    >
+                  </li>
+                  <li>
+                    <a class="nav-link" href="https://crie.utp.edu.co/noticias/"
+                      >Noticias</a
+                    >
+                  </li>
+                  <li>
+                    <a class="nav-link" href="https://crie.utp.edu.co/contactenos/"
+                      >Contáctenos</a
+                    >
+                  </li>
+                  <li><a class="nav-link" href="https://crie.utp.edu.co/servicios/">Servicios</a></li>
+                  <li><a class="nav-link" href="https://crie.utp.edu.co/category/criein/">CRIEin</a></li>
+                </ul>
+              </nav>
+        <!-- fin menu parte inferior -->
+
+
+          <!-- Desplegable parte inferior -->
+            <div class="col-12 color-back-menuInf">
+              <q-btn-dropdown class="without-icon hidden-xl desktop-only mobile-hide despl-menu-inf" color="var(--institucional)" icon="menu">
+                <q-list>
+                  <q-item clickable v-close-popup @click="onItemClick('Inicio')">
+                    <q-item-section>
+                      <q-item-label><a href="https://www.utp.edu.co/">Inicio</a></q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+                <q-list>
                 <q-item clickable v-close-popup @click="onItemClick('CRIE')">
                   <q-item-section>
                     <q-item-label><a href="https://crie.utp.edu.co/crie/">CRIE</a></q-item-label>
@@ -168,90 +273,32 @@
                   </q-item-section>
                 </q-item>
               </q-list>
-          </q-btn-dropdown>
-        </div>
-        <div class="col-10 col-xl-9 d-none d-lg-block mobile-hide desktop-only">
-          <q-bar class=" menu-institucional">
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Inicio')">
-                <q-item-section>
-                  <q-item-label><a href="https://crie.utp.edu.co/">Inicio</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('CRIE')">
-                <q-item-section>
-                  <q-item-label><a href="https://crie.utp.edu.co/crie/">CRIE</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Noticias')">
-                <q-item-section>
-                  <q-item-label><a href="https://crie.utp.edu.co/noticias/">Noticias</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Contáctenos')">
-                <q-item-section>
-                  <q-item-label><a href="https://crie.utp.edu.co/contactenos/">Contáctenos</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('Servicios')">
-                <q-item-section>
-                  <q-item-label><a href="https://crie.utp.edu.co/servicios/">Servicios</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick('CRIEin')">
-                <q-item-section>
-                  <q-item-label><a href="https://crie.utp.edu.co/category/criein/">CRIEin</a></q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-bar>
-        </div>
-        <div class="col-2 col-xl-3 mobile-hide desktop-only q-my-sm">
-          <!--  -->
+              </q-btn-dropdown>
+           </div>
 
-        <!-- <q-form class="row buscador">
-          <q-input outlined bg-color="white" placeholder="Busqueda">
+          <!--Menu Desplegable parte inferior -->
+        </div>
+        <!-- Buscador segundo menu -->
+        <div class="buscador-facul col-5 ">
 
-          </q-input>
-          <q-btn icon="search" bg-color="primary"></q-btn>
-        </q-form> -->
-        <!-- --------------------------Buscador arriba uwu------------------------ -->
-        <div class="col-12">
-          <form role="search" id="cse-search-box" method="get" class=" input-group input-group-sm" action="https://crie.utp.edu.co/">
-            <div style="width: 90%;">
+            <form role="search" id="cse-search-box" method="get" class="buscador-boton input-group input-group-sm busqueda-down" action="https://crie.utp.edu.co/">
               <input name="ie" value="UTF-8" type="hidden">
               <input class="form-control no-border-radius" type="search" aria-label="Google Search" placeholder="Busqueda" value="" name="s">
-            </div>
+              <button class="fs-1 input-group-text bi btn-primary bi-search rounded-end" aria-label="Buscador" aria-hidden="false" style="padding-bottom: 0; border-bottom-width: 0px;"></button>
+              <input id="buscar" name="siteurl" value="www.utp.edu.co/" type="hidden">
+            </form>
 
-            <button class="input-group-text bi btn-primary bi-search rounded-end" aria-label="Buscador" aria-hidden="false" style="padding-bottom: 0; border-bottom-width: 0px;"></button>
+        </div>
+      </div>
+    </div>
 
-            <input id="buscar" name="siteurl" value="www.utp.edu.co/" type="hidden">
-          </form>
-        </div>
-        </div>
-        <div class="col-5 mobile-only desktop-hide">
-          <form role="search" id="cse-search-box" method="get" class="input-group input-group-sm" action="https://crie.utp.edu.co/">
-            <label class="sr-only">
-                <span class="d-none screen-reader-text">Buscar:</span>
-            </label>
-            <input name="ie" value="UTF-8" type="hidden">
-            <input class="form-control" type="search" aria-label="Google Search" placeholder="Busqueda" value="" name="s">
-            <button class="input-group-text bi btn-primary bi-search rounded-end" aria-label="Buscador" aria-hidden="false"></button>
-            <input id="buscar" name="siteurl" value="www.utp.edu.co/" type="hidden">
-          </form>
-        </div>
-      </section>
-	  </header>
+
+
+
+
+
+
+
 
     <!-- fin cabecera para Postgrados-->
     <!-- ======================================================================================================================= -->
@@ -276,11 +323,6 @@
             <li class="active">Solicitud sala especial de formación</li>
           </ol>
         </div>
-
-        <!-- Menu Contenido Izquierdo -->
-
-
-        <!-- Fin Menu Contenido Izquierdo-->
 
         <!-- Contenido Noticias -->
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">

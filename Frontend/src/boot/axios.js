@@ -6,6 +6,8 @@ let baseURLAdmin = "http://127.0.0.1:8000/api/adm";
 let http, httpAdmin;
 let alertShowed = false;
 
+
+
 export default ({ store, Vue, router }) => {
   http = axios.create({
     baseURL: baseURLUser,
@@ -21,6 +23,7 @@ export default ({ store, Vue, router }) => {
       // Authorization: "Bearer aC5wdWxnYXJpbjoxMDg4MDMyNjk0YQ=="
     }
   });
+
 
   Vue.prototype.$http = http;
   Vue.prototype.$httpAdmin = httpAdmin;
@@ -112,6 +115,25 @@ export default ({ store, Vue, router }) => {
       }
     }
   );
+
+  // axios.interceptors.response.use(response => response, error => {
+  //   const status = error.response ? error.response.status: null
+
+  //   if (status==401) {
+  //     //Se activa si refreshtoken tira un 401
+  //     return refreshToken(store).then(_ => {
+  //       error.config.headers['Authorization'] = 'bearer' + store.state.auth.token;
+  //       error.config.baseURL = "http://127.0.0.1:8000/api";
+  //       return axios.request(error.config);
+  //     })
+
+  //     //Seria bueno captar un error aqui, el cual funciona si el interceptor es omitido
+  //     .catch(err => err);
+  //   }
+
+  //   return Promise.reject(error);
+  // })
+
 };
 
 export { http, httpAdmin };
