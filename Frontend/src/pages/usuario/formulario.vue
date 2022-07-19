@@ -1,4 +1,8 @@
 <style lang="scss" scoped>
+
+.formulario-cont{
+  padding:0 20px;
+}
 .logout {
   text-align: right;
   span {
@@ -102,6 +106,7 @@
         <h2>Solicitud de salas especiales de formación</h2>
       </div>
     </div>
+    <div class="formulario-cont">
     <div class="logout">
       <span @click="cerrarSesion()">Cerrar sesión</span>
     </div>
@@ -1099,6 +1104,7 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+    </div>
   </div>
 </template>
 

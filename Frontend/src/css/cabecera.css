@@ -155,14 +155,6 @@ i.q-icon.notranslate.q-btn-dropdown__arrow.q-btn-dropdown__arrow-container {
   max-height: 64px;
 }
 
-.vl {
-  height: 48px !important;
-  border-right: 2px solid var(--blanco);
-  width: 2px;
-  padding: 0 2px;
-  margin-left: 1.5rem;
-}
-
 .subrayado{
   text-decoration: none;
 }

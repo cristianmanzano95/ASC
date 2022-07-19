@@ -12,7 +12,7 @@
           <div class="row row_cabecera">
 
             <!-- Desplegable parte superior -->
-            <div class="col-2">
+            <div class="col-2 hidden-md">
               <q-btn-dropdown class="" color="grey-4" icon="menu">
                 <q-list>
                   <q-item clickable v-close-popup @click="onItemClick('Inicio')">
@@ -68,7 +68,7 @@
           <!-- Desplegable parte superior -->
 
 
-            <div class="container_cabecera row col-5">
+            <div class="container_cabecera row col-xxl-3 col-5">
 
               <div class="row col-12 titulo-izq" >
                 <div class="img-izq-sup">
@@ -102,7 +102,7 @@
 
 
           <!-- Menu superior -->
-              <nav class="menu_superior col-lg-6 hidden-md">
+              <nav class="menu_superior col-xxl-6 hidden-sm">
                 <ul class="menu_principal_facul hidden-xs ">
                   <li>
                     <a class="nav-link" href="https://crie.utp.edu.co/inicio.html">Inicio</a>
@@ -134,7 +134,7 @@
               </nav>
               <!-- fin menu superior -->
 
-              <div class="escudo_facul col-5">
+              <div class="escudo_facul col-xxl-3 col-5">
                 <a
                   href="https://www.mineducacion.gov.co/1621/w3-channel.html"
                   title="Ministerio de Educacion"
@@ -200,9 +200,9 @@
     <!-- menu parte inferior -->
     <div class="row menu-nav color-back-menuInf ">
       <div class=" col-12 ribbon-facultades hidden-print row">
-        <div class="menu-nav col-7">
-          <nav class="menu_superior col-lg-6 hidden-md">
-                <ul class="menu_principal_facul hidden-xs ">
+        <div class="menu-nav col-9 col-xss-7">
+          <nav class="menu_superior hidden-sm ">
+                <ul class="menu_principal_nav hidden-xs ">
                   <li>
                     <a class="nav-link" href="https://crie.utp.edu.co/inicio.html">Inicio</a>
                   </li>
@@ -230,7 +230,7 @@
 
           <!-- Desplegable parte inferior -->
             <div class="col-12 color-back-menuInf">
-              <q-btn-dropdown class="without-icon hidden-xl desktop-only mobile-hide despl-menu-inf" color="var(--institucional)" icon="menu">
+              <q-btn-dropdown class="without-icon hidden-xl despl-menu-inf hidden-md " color="var(--institucional)" icon="menu">
                 <q-list>
                   <q-item clickable v-close-popup @click="onItemClick('Inicio')">
                     <q-item-section>
@@ -279,7 +279,7 @@
           <!--Menu Desplegable parte inferior -->
         </div>
         <!-- Buscador segundo menu -->
-        <div class="buscador-facul col-5 ">
+        <div class="buscador-facul col-3 col-xss-5">
 
             <form role="search" id="cse-search-box" method="get" class="buscador-boton input-group input-group-sm busqueda-down" action="https://crie.utp.edu.co/">
               <input name="ie" value="UTF-8" type="hidden">
@@ -312,20 +312,20 @@
               <a
                 href="https://crie.utp.edu.co/"
                 title="pagina de inicio"
-                >Inicio</a
-              >
+                >Inicio
+              </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="https://crie.utp.edu.co/servicios/salas-especiales-de-formacion/" title="Salas"
                 >Salas</a
               >
-            </li>
+            </li> -->
             <li class="active">Solicitud sala especial de formación</li>
           </ol>
         </div>
 
         <!-- Contenido Noticias -->
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-xs-12">
           <router-view />
         </div>
       </div>

@@ -26,7 +26,7 @@
 }
 </style>
 <template>
-  <main class="cuerpo-contenido">
+  <main class="">
     <div v-if="$route.name === 'login'" class="">
 
         <div class="tituloPost">
