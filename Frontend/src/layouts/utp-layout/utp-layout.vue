@@ -376,7 +376,7 @@
         <p class="mb-0">Teléfono: +57 606 3137141 Fax: :  3137107</p>
         <p class="mb-0">Conmutador: (57) 606 313 7300</p>
         <br>
-        <p class="mb-0">Correo: <a href="mailto:contactenos@utp.edu.co?Subject=Correo%20de%20contacto%20"><strong>contactenos@utp.edu.co</strong></a></p>
+        <p class="mb-0">Correo: <a href="mailto:admsalas@utp.edu.co?Subject=Correo%20de%20contacto%20"><strong>admsalas@utp.edu.co</strong></a></p>
         <br>
         <p class="mb-0"><strong>Dirección:</strong></p>
         <p class="mb-0">Recursos Informáticos y Educativos - CRIE</p>
