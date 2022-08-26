@@ -1,0 +1,177 @@
+FROM php:7.3-apache-stretch
+
+# Set working directory
+WORKDIR /app
+
+COPY composer*.json /var/www/html/
+COPY composer.lock /var/www/html/
+COPY package.json /var/www/html/
+COPY ./ /var/www/html/
+
+
+
+RUN apt update \
+    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
+    && docker-php-ext-install intl opcache pdo pdo_mysql \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
+
+RUN apt-get install libaio1
+
+RUN apt-get update \
+    && apt-get install libldap2-dev libpq-dev  -y   \
+    && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
+    && docker-php-ext-install ldap
+
+RUN apt-get update && apt-get install -y \
+        libpng-dev \
+        zlib1g-dev \
+        libxml2-dev \
+        libzip-dev \
+        libonig-dev \
+        zip \
+        curl \
+        unzip \
+    && docker-php-ext-configure gd \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install zip \
+    && docker-php-source delete
+
+RUN curl -L https://raw.github.com/adrianharabula/php7-with-oci8/master/docker-php.conf -o /etc/apache2/conf-enabled/docker-php.conf
+
+RUN printf "log_errors = On \nerror_log = /dev/stderr\n" > /usr/local/etc/php/conf.d/php-logs.ini
+
+RUN a2enmod rewrite
+
+# Git configuration
+RUN git config --global user.email "ccmanzano@utp.edu.co" \
+    && git config --global user.name "Cristian Camilo Manzano Calvo"
+
+#Instat-Client
+ENV ORACLE_INSTANTCLIENT_MAJOR 12.2
+ENV ORACLE_INSTANTCLIENT_VERSION 12.2.0.1.0
+ENV ORACLE /usr/local/oracle
+ENV ORACLE_HOME $ORACLE/lib/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$ORACLE_HOME/lib
+ENV C_INCLUDE_PATH $C_INCLUDE_PATH:$ORACLE/include/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64
+
+RUN apt-get update && apt-get install -y libaio1 \
+         curl rpm2cpio cpio \
+    && mkdir $ORACLE && TMP_DIR="$(mktemp -d)" && cd "$TMP_DIR" \
+    && curl -L https://github.com/sergeymakinen/docker-oracle-instant-client/raw/assets/oracle-instantclient$ORACLE_INSTANTCLIENT_MAJOR-basic-$ORACLE_INSTANTCLIENT_VERSION-1.x86_64.rpm -o basic.rpm \
+    && rpm2cpio basic.rpm | cpio -i -d -v && cp -r usr/* $ORACLE && rm -rf ./* \
+    && ln -s libclntsh.so.12.1 $ORACLE/lib/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64/lib/libclntsh.so.$ORACLE_INSTANTCLIENT_MAJOR \
+    && ln -s libocci.so.12.1 $ORACLE/lib/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64/lib/libocci.so.$ORACLE_INSTANTCLIENT_MAJOR \
+    && curl -L https://github.com/sergeymakinen/docker-oracle-instant-client/raw/assets/oracle-instantclient$ORACLE_INSTANTCLIENT_MAJOR-devel-$ORACLE_INSTANTCLIENT_VERSION-1.x86_64.rpm -o devel.rpm \
+    && rpm2cpio devel.rpm | cpio -i -d -v && cp -r usr/* $ORACLE && rm -rf "$TMP_DIR" \
+    && echo "$ORACLE_HOME/lib" > /etc/ld.so.conf.d/oracle.conf && chmod o+r /etc/ld.so.conf.d/oracle.conf && ldconfig \
+    && rm -rf /var/lib/apt/lists/* && apt-get purge -y --auto-remove curl rpm2cpio cpio
+
+# RUN cd /tmp && curl -L https://raw.github.com/adrianharabula/php7-with-oci8/master/instantclient/19.3.0.0.0/instantclient-basiclite-linux.x64-19.3.0.0.0dbru.zip -O
+# RUN cd /tmp && curl -L https://raw.github.com/adrianharabula/php7-with-oci8/master/instantclient/19.3.0.0.0/instantclient-sdk-linux.x64-19.3.0.0.0dbru.zip -O
+# RUN cd /tmp && curl -L https://raw.github.com/adrianharabula/php7-with-oci8/master/instantclient/19.3.0.0.0/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip -O
+
+# RUN unzip /tmp/instantclient-basiclite-linux.x64-19.3.0.0.0dbru.zip -d /usr/local/
+# RUN unzip /tmp/instantclient-sdk-linux.x64-19.3.0.0.0dbru.zip -d /usr/local/
+# RUN unzip /tmp/instantclient-sqlplus-linux.x64-19.3.0.0.0dbru.zip -d /usr/local/
+
+# RUN ln -s /usr/local/instantclient_19_3 /usr/local/instantclient
+# # fixes error "libnnz19.so: cannot open shared object file: No such file or directory"
+# RUN ln -s /usr/local/instantclient/lib* /usr/lib
+# RUN ln -s /usr/local/instantclient/sqlplus /usr/bin/sqlplus
+
+RUN echo 'export LD_LIBRARY_PATH="/usr/local/instantclient"' >> /root/.bashrc
+RUN echo 'umask 002' >> /root/.bashrc
+
+# RUN echo 'instantclient,/usr/local/instantclient' | pecl install oci8-2.2.0
+# RUN echo "extension=oci8.so" > /usr/local/etc/php/conf.d/php-oci8.ini
+
+RUN echo "<?php echo phpinfo(); ?>" > /var/www/html/phpinfo.php
+
+
+
+
+# Add docker php ext repo
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+# Install php extensions
+RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions mbstring pdo_mysql zip exif pcntl gd memcached
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    unzip \
+    git \
+    curl \
+    lua-zlib-dev \
+    libmemcached-dev \
+    nginx
+
+# Install supervisor
+RUN apt-get install -y supervisor
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Add user for laravel application
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
+
+# Copy code to /app
+COPY --chown=www:www-data . /app
+
+# add root to www group
+RUN chmod -R ug+w /app/storage
+
+# Copy nginx/php/supervisor configs
+# RUN cp docker/supervisor.conf /etc/supervisord.conf
+# RUN cp docker/php.ini /usr/local/etc/php/conf.d/app.ini
+# RUN cp docker/nginx.conf /etc/nginx/sites-enabled/default
+
+# PHP Error Log Files
+RUN mkdir /var/log/php
+RUN touch /var/log/php/errors.log && chmod 777 /var/log/php/errors.log
+
+# Deployment steps
+# RUN composer install --optimize-autoloader --no-dev
+# RUN chmod +x /app/docker/run.sh
+
+# ENV ORACLE_INSTANTCLIENT_MAJOR 12.2
+# ENV ORACLE_INSTANTCLIENT_VERSION 12.2.0.1.0
+# ENV ORACLE /usr/local/oracle
+# ENV ORACLE_HOME $ORACLE/lib/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64
+# ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$ORACLE_HOME/lib
+# ENV C_INCLUDE_PATH $C_INCLUDE_PATH:$ORACLE/include/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64
+
+# RUN apt-get update && apt-get install -y libaio1 \
+#          curl rpm2cpio cpio \
+#     && mkdir $ORACLE && TMP_DIR="$(mktemp -d)" && cd "$TMP_DIR" \
+#     && curl -L https://github.com/sergeymakinen/docker-oracle-instant-client/raw/assets/oracle-instantclient$ORACLE_INSTANTCLIENT_MAJOR-basic-$ORACLE_INSTANTCLIENT_VERSION-1.x86_64.rpm -o basic.rpm \
+#     && rpm2cpio basic.rpm | cpio -i -d -v && cp -r usr/* $ORACLE && rm -rf ./* \
+#     && ln -s libclntsh.so.12.1 $ORACLE/lib/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64/lib/libclntsh.so.$ORACLE_INSTANTCLIENT_MAJOR \
+#     && ln -s libocci.so.12.1 $ORACLE/lib/oracle/$ORACLE_INSTANTCLIENT_MAJOR/client64/lib/libocci.so.$ORACLE_INSTANTCLIENT_MAJOR \
+#     && curl -L https://github.com/sergeymakinen/docker-oracle-instant-client/raw/assets/oracle-instantclient$ORACLE_INSTANTCLIENT_MAJOR-devel-$ORACLE_INSTANTCLIENT_VERSION-1.x86_64.rpm -o devel.rpm \
+#     && rpm2cpio devel.rpm | cpio -i -d -v && cp -r usr/* $ORACLE && rm -rf "$TMP_DIR" \
+#     && echo "$ORACLE_HOME/lib" > /etc/ld.so.conf.d/oracle.conf && chmod o+r /etc/ld.so.conf.d/oracle.conf && ldconfig \
+#     && rm -rf /var/lib/apt/lists/* && apt-get purge -y --auto-remove curl rpm2cpio cpio
+
+EXPOSE 80
+EXPOSE 5000
+# ENTRYPOINT ["/app/docker/run.sh"]
+
+
